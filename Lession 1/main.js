@@ -10,7 +10,11 @@ var vueInstance = new Vue({
             {text: 'học javascript1'},
             {text: 'học javascript2'},
             {text: 'học javascript3'}
-        ]
+        ],
+
+        checkit: false,
+
+        price: '50000'
     },
     //method là các hàm hỗ trợ trong quá trình tính toán
 
@@ -23,9 +27,19 @@ var vueInstance = new Vue({
         },
 
         nam(){
-            console.log('Nam ta')
-        }
+            console.log('Nam ta');
+        },
+        formatPrice(){
+            // console.log(this);
+
+            var number = this.price;
+            return  new  Intl.NumberFormat('de-DE',{style: 'currency', currency:'VND'}).format(number);
+
         
+        },
+        
+        
+
     }   
 });
 

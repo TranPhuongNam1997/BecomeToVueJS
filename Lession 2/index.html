@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Counter</h1>
+        <button v-on:click="handerClick(5 , $event)">Click here</button>
+
+        <div>Giá trị hiện tại là {{counter}}</div>
+        
+        <div v-on:mousemove="handleMouseMove">Di chuyen chuot vao day</div>
+
+        <div>ClientX la :{{clientX}}</div>
+
+        <div>ClientY la :{{clientY}}</div>
+
+
+        <form action="./servertest.php" v-on:submit.prevent="handleSubmitForm">
+            <label for="">Nhap ten</label>
+            <input type="text" name="Name">
+            <label for="">Nhap email</label>
+            <input type="text" name="Email">
+
+            <input type="submit" value="dang nhap">
+
+        </form>
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
+
