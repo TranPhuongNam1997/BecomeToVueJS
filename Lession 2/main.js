@@ -5,6 +5,11 @@ var vueInstance = new Vue({
         counter: 0,
         clientX: 0,
         clientY: 0,
+
+        a:0,
+        b:0,
+        number: 20,
+        yourname: 'trần',
     },
 
     methods:{
@@ -18,10 +23,33 @@ var vueInstance = new Vue({
             this.clientY = e.clientY;
         },
         handleSubmitForm(e){
-            console.log(e);
-        }
+            // console.log(e);
+        },
+        handleMouseMoveChild(e){
+            // console.log('handleMouseMoveChild123',e.target);
+        },
+        
 
-    }   
+        yournamehandle(e){
+            console.log(e.target.value);
+            this.yourname = e.target.value;
+        },
+    },
+
+    computed:{
+        //chỉ được thực thi khi có bất kì dữ liệu trong này thay đổi
+        plusA(){
+            console.log('running A');
+            return this.a + this.number;
+        },
+        plusB(){
+            console.log('running B');
+            return this.b + this.number;
+        },
+        
+        
+
+    }
 });
 
 
