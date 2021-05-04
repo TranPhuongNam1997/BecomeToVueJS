@@ -46,8 +46,6 @@ var vueInstance = new Vue({
             console.log('running B');
             return this.b + this.number;
         },
-        
-        
 
     }
 });
