@@ -20,6 +20,24 @@ var vueInstance = new Vue({
             },
             
         ],
+        listServer: [
+            {
+                'gmail': "mail1@gmail.com",
+                isActive: true,
+            },
+
+            {
+                'gmail': "mail2@gmail.com",
+                isActive: false,
+            },
+            {
+                'gmail': "mail3@gmail.com",
+                isActive: false,
+            },
+            
+            
+        ],
+        
 
         score:{
             toan: 10,
@@ -32,6 +50,28 @@ var vueInstance = new Vue({
     methods:{
         
         
+    },
 
-    }   
+    computed:{
+        checkvaluelist(){
+
+            //cach viet 1 
+            // var newlist  =  this.listServer.filter(
+            //     function(u){
+            //         return u.isActive;
+            //     }
+            // );
+
+            // return newlist;
+            
+            //cach viet 2 
+
+            return this.listServer.filter(
+                function(u){
+                    return u.isActive;
+                }
+            );
+        }
+    }
 });
+

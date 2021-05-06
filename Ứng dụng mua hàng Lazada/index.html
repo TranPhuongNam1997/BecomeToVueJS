@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container mt-5">
+            <div class="text-right">
+                <button type="button" class="btn btn-outline-primary mb-5">Giỏ hàng (1)</button>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="w-100" v-bind:src="getSanPham.hinhanh" alt="">
+
+                </div>
+                <div class="col-lg-8">
+                    <div class="name-pro mb-3">{{tieude}}</div>
+                    <div class="mb-2">Thương hiệu : {{thuonghieu}}</div>
+                    <div class="mb-2" v-if="getSanPham.soluong > 0">Còn lại : {{getSanPham.soluong}} sản phẩm</div>
+                    <div class="mb-2" v-if="getSanPham.soluong <= 0">Sản phẩm đã hết hàng</div>
+
+                    <div class="price mt-2 mb-2">{{giaChinhXac}}</div>
+                    <div class="sale mb-3">{{dinhDangGia}} <span class="ml-2">-{{giamgia * 100}}%</span></div>
+                    <div class="color mb-3">
+                        Nhóm màu : <span class="ml-4">{{getSanPham.tenmau}}</span>
+                    </div>
+                    <div class="color mb-3">
+                        <div class="list-color">
+                            <ul>
+                                <li 
+                                    v-bind:class="checkClassActive(index)"
+                                    v-bind:key="index"
+                                    v-for="(item,index) in chitietdanhsachsanpham" 
+                                    v-on:click="sanphamdangchon = index">
+                                    <!-- dó nó là actribute nên phải sử dụng ràng buộc -->
+                                    <img v-bind:src="item.hinhanh" v-bind:alt="item.tenmau">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Thêm vảo giỏ hàng</button>
+                </div>
+            </div>
+            <div class="description mt-5" v-html="mota2">
+                
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>

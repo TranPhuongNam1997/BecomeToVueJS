@@ -9,6 +9,7 @@
 <body>
 
     <div id="app">
+        11111
         <div class="blog" v-for="(item,index) in listData" v-bind:key="index">
             <div class="item-blog">
                 <div class="title">{{item.tiltle}}</div>
@@ -20,10 +21,12 @@
             <li v-for="(value,key) in score"> {{ key }}: {{value}}</li>
         </ul>
 
+        <!-- <div v-for="item in listServer" v-if="item.isActive">{{item.gmail}}</div> -->
+        
+        <div v-for="item in checkvaluelist">{{item.gmail}}</div>
+
     </div>
-
-
-    <script src="main.js"></script>
+    <script src="main.js"></script> 
 </body>
 </html>
 

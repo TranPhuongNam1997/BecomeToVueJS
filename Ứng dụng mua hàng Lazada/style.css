@@ -1,0 +1,47 @@
+
+*{
+    box-sizing: border-box;
+}
+.w-30{
+    width: 30%;
+}
+.name-pro{
+    font-weight: 700;
+    font-size: 22px;
+}
+.price{
+    font-weight: 700;
+    color: #F3047B;
+    font-size: 18px;
+
+}
+.sale{
+    color: gray;
+
+}
+.sale span{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+}
+.list-color{
+    
+}
+.list-color ul{
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+.list-color li{
+    list-style: none;
+    margin-right: 15px;
+    border: 2px solid transparent;
+
+}
+.list-color li.active{
+    border: 2px solid orange;
+}
+.list-color li img{
+    width: 45px;
+}
