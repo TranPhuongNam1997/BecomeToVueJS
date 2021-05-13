@@ -2,15 +2,27 @@
   <div id="app">
     <div class="wrapper clearfix">
       <!-- truyền props scorePlayers -->
+
       <players
         v-bind:scorePlayers="scorePlayers"
         v-bind:activePlayer="activePlayer"
         v-bind:currentScore="currentScore"
       />
-      <controls v-on:EventNewGame="NewGameFunction" v-on:rollDice="rollDice" v-on:holdPointClick="holdPointClick" />
+
+      <controls 
+        v-on:EventNewGame="NewGameFunction" 
+        v-on:rollDice="rollDice" 
+        v-on:holdPointClick="holdPointClick" 
+      />
+
       <dices v-bind:dices="dices" />
+
     </div>
-    <popup v-bind:isOpenPopup="isOpenPopup" v-on:closePopup="closePopup" />
+    <popup 
+      v-bind:isOpenPopup="isOpenPopup" 
+      v-on:closePopup="closePopup" 
+    />
+    
   </div>
 </template>
 
@@ -62,7 +74,23 @@ export default {
         // nếu xx =1
         if(dices1 == 1 || dices2 == 1){
           // đổi lượt chơi
-          alert(`Rất tiếc! Người chơi số ${this.activePlayer + 1} đã quay trúng số 1. Mất lượt`);
+          // do thông báo bị chuyển thành NAN
+          // cách 1
+
+          // let namePlayer = this.activePlayer + 1;
+          // setTimeout(function(){
+          //   alert(`Rất tiếc! Người chơi số ${namePlayer} đã quay trúng số 1. Mất lượt`);
+
+          // },200);
+
+          // cách 2 
+          setTimeout(() =>{
+            alert(`Rất tiếc! Người chơi số ${this.activePlayer} đã quay trúng số 1. Mất lượt`);
+
+          },200);
+
+
+
 
           this.nextPlayer();
 
