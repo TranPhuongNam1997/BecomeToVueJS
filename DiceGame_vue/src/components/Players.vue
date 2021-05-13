@@ -20,7 +20,8 @@
   </div>
 </template>
 <script>
-export default {
+
+export default {     
   name: "players",
   data() {
     return {};
