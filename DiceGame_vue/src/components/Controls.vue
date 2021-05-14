@@ -9,13 +9,52 @@
       <i class="ion-ios-loop"></i>Roll dice
     </button>
     <button class="control btn-hold"
-      v-on:click="holdPoint"
+      v-on:click="$emit('holdPointClick')"
     
     >
       <i class="ion-ios-download-outline"></i>Hold
     </button>
 
-    <input type="number" placeholder="Final score" class="final-score"  />
+    <!-- Ràng buộc 2 chiều  -->
+    <input 
+        v-bind:disabled="isplaying"
+
+        v-bind:value="finalScore"
+        
+        v-on:input="$emit('getVlInput',$event)"
+
+        type="number" placeholder="Final score" class="final-score"  
+        
+    />
+
+
+    <!-- ràng buộc 1 chiều -->
+    <!-- truyền dữ liệu vào input -->
+    <!-- truyền input vào dữ liệu -->
+    <!-- <input 
+      
+      v-bind:value="valueDemo" 
+
+      v-on:input="valueDemo = $event.target.value"
+
+      type="number" placeholder="Final score" class="final-score"
+    
+    /> -->
+
+
+    <!-- 
+        1. ràng buộc dữ liệu (thuộc tính HTML) -> v-bind
+            1 chiều từ data sang input chứ không có chiều ngược lại
+
+        2. ràng buộc dữ liệu 2 chiều -> v-model
+            1 chiều từ data vào input
+            1 chiều từ input vào data
+
+
+        
+     -->
+
+
   </div>
 </template>
 
@@ -24,11 +63,20 @@ export default {
   name: "controls",
   data() {
 
-    return{}
+    return{
+      valueDemo: 1000
+    }
 
   },
   props:{
-    inputValues: Number,
+    finalScore:{
+      type: [Number,String],
+      default: 0,
+    },
+    isplaying:{
+      type: Boolean,
+      default: false
+    }
   },
 
   methods:{
@@ -40,12 +88,12 @@ export default {
       console.log('roll dice from controls');
       this.$emit('rollDice');
     },
-    holdPoint(inputValues){
-      $('.final-score').val(inputValues);
+    // holdPoint(inputValues){
+    //   $('.final-score').val(inputValues);
       
-      this.$emit('holdPointClick',inputVlue);
+    //   this.$emit('holdPointClick',inputVlue);
 
-    }
+    // }
   }
 };
 </script>

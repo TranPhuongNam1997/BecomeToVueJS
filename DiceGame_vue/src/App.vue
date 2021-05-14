@@ -7,9 +7,16 @@
         v-bind:scorePlayers="scorePlayers"
         v-bind:activePlayer="activePlayer"
         v-bind:currentScore="currentScore"
+        v-bind:isWinner="isWinner"
       />
 
       <controls 
+        v-bind:isplaying="isplaying"
+        v-bind:finalScore="finalScore"
+        v-on:getVlInput="getVlInput"
+        
+
+
         v-on:EventNewGame="NewGameFunction" 
         v-on:rollDice="rollDice" 
         v-on:holdPointClick="holdPointClick" 
@@ -22,6 +29,7 @@
       v-bind:isOpenPopup="isOpenPopup" 
       v-on:closePopup="closePopup" 
     />
+    
     
   </div>
 </template>
@@ -42,13 +50,65 @@ export default {
       currentScore: 11,
       isOpenPopup: false,
       dices: [4, 5],
+      finalScore: 15,
     };
+  },
+  computed:{
+    isWinner(){
+      let {scorePlayers,finalScore} = this;
+      if(scorePlayers[0] >= finalScore || scorePlayers[1] >= finalScore){
+        // Dừng cuộc chơi
+        this.isplaying = false;
+        return true;
+      }
+      return false;
+    }
   },
 
   methods: {
+    getVlInput(e){
+
+      var number = parseInt(e.target.value) ;
+      if(isNaN(number)){
+        this.finalScore= '';
+      }
+      else{
+        this.finalScore = number;
+
+      }
+    },
     holdPointClick(inputVlue){
       if(this.isplaying){
-        inputVlue = this.currentScore;
+        // inputVlue = this.currentScore;
+        /*
+          activePlayer = 0 -> người chơi 1
+          activePlayer = 1 -> người chơi 2
+          scorePlayer - > array
+          scorePlayer[0] = scorePlayer[activePlayer]
+          scorePlayer[1] = scorePlayer[activePlayer]
+        */
+        let {scorePlayers,activePlayer,currentScore} = this;
+        let scoreOld = scorePlayers[activePlayer];
+
+        //cách 1 : dùng clone data  
+
+        // let cloneScorePlayer = [...scorePlayers];
+        // cloneScorePlayer[activePlayer] = scoreOld + currentScore;
+        // this.scorePlayers = cloneScorePlayer;
+
+        //cách 2 : dùng $set
+
+        this.$set(this.scorePlayers,activePlayer,scoreOld + currentScore);
+
+        if(!this.isWinner){
+          this.nextPlayer();
+
+        }
+
+        // this.scorePlayers[this.activePlayer] = scoreOld + this.currentScore;
+        // console.log(this.scorePlayers);
+
+        //ES6 destrucring
 
       }
       else {
