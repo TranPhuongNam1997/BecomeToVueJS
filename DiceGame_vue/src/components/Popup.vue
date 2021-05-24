@@ -19,7 +19,8 @@ export default {
     btnClosePoup(){
         console.log('click close');
         this.$emit('closePopup');
-    }
+    },
+    
   },
   props:{
     isOpenPopup:{
