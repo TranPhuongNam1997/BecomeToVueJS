@@ -1,20 +1,22 @@
 <template>
   <div class="wrap-player">
-    <div class="player-panel active">
-      <div class="player-name">Người chơi 1</div>
-      <div class="player-score">43</div>
+    <!-- v-bind class                       tên class   điều kiện -->
+    <div class="player-panel" v-bind:class="{ active: trangthainguoidangchoi == 0 }">
+      <div class="player-name">player 1</div>
+      <div class="player-score">{{diemcaocuanguoichoi[0]}}</div>
       <div class="player-current-box">
         <div class="player-current-label">Current</div>
-        <div class="player-current-score">11</div>
+        <!-- Toán tử 3 ngồi                        điều kiện              nếu đúng    nếu sai -->
+        <div class="player-current-score">{{trangthainguoidangchoi == 0 ? diemhientai : 0}}</div>
       </div>
     </div>
 
-    <div class="player-panel">
-      <div class="player-name">Người chơi 2</div>
-      <div class="player-score">72</div>
+    <div class="player-panel" v-bind:class="{ active: trangthainguoidangchoi == 1}">
+      <div class="player-name">Player 2</div>
+      <div class="player-score">{{diemcaocuanguoichoi[1]}}</div>
       <div class="player-current-box">
         <div class="player-current-label">Current</div>
-        <div class="player-current-score">0</div>
+        <div class="player-current-score">{{trangthainguoidangchoi == 1 ? diemhientai : 0}}</div>
       </div>
     </div>
   </div>
@@ -24,11 +26,26 @@ export default {
   name: "nguoichoi",
 
   data() {
-
+    return{
+      
+    }
   },
 
   props:{
+    trangthainguoidangchoi:{
+      type: Number,
+      default: 0
+    },
     
+    diemcaocuanguoichoi:{
+      type: Array,
+      default: [0,0]
+    },
+    diemhientai:{
+      type: Number,
+      default: 0
+    },
+
 
   }
 

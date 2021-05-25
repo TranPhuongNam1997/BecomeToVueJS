@@ -1,12 +1,18 @@
 <template>
   <div class="wrap-control">
-    <button class="control btn-new">
+    <button class="control btn-new"
+      v-on:click="$emit('clicknewgame')"
+    >
       <i class="ion-ios-plus-outline"></i>Chơi mới
     </button>
-    <button class="control btn-roll">
+    <button class="control btn-roll"
+      v-on:click="$emit('xoayxucxac')"
+    >
       <i class="ion-ios-loop"></i>Quay xúc xắc
     </button>
-    <button class="control btn-hold">
+    <button class="control btn-hold"
+      v-on:click="$emit('nutgiudiem')"
+    >
       <i class="ion-ios-download-outline"></i>Giữ điểm
     </button>
 
@@ -17,7 +23,20 @@
 export default {
   name: "dieukhien",
 
-  data() {},
+  data() { 
+    return{
+
+    }
+  },
+  methods:{
+    // clicknewgame(){
+    //   this.; 
+
+    // },
+  }
+
+
+
 };
 </script>
 <style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap-pp">
+  <div class="wrap-pp" v-bind:class="classhienthipopup">
     <div class="box-popup">
       <div class="head-pp">Luật chơi</div>
       <p>
@@ -17,7 +17,10 @@
         cumque.
       </p>
       <div class="text-center">
-        <button class="btn-mean btn btn-primary ml-3 mb-4">Đã hiểu luật</button>
+        <button class="btn-mean btn btn-primary ml-3 mb-4"
+          v-on:click="$emit('dahieuluat')"
+        
+        >Đã hiểu luật</button>
 
       </div>
     </div>
@@ -26,8 +29,33 @@
 <script>
 export default {
   name: "luatchoi",
+  
 
-  data() {},
+  data() {
+    return{
+      
+    }
+  },
+  props:{
+    hienthipopup:{
+      type: Boolean,
+      default: false,
+    }
+  },
+  
+  // methods:{
+  //   classhienthipopup(){
+  //     return
+  //   }
+  // },
+
+  computed:{
+    classhienthipopup: function(){
+      return{
+        'show-popup' : this.hienthipopup
+      }
+    }
+  },
 };
 </script>
 <style>

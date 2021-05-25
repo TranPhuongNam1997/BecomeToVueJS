@@ -1,7 +1,7 @@
 <template>
   <div class="wrap-xx">
     <div id="dice-1" class="dice">
-      <div class="spinner dice-3">
+      <div class="spinner" v-bind:class="'dice-' + xuxxac[0]">
         <div class="face1">1</div>
         <div class="face2">2</div>
         <div class="face3">3</div>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div id="dice-2" class="dice">
-      <div class="spinner dice-6">
+      <div class="spinner " v-bind:class="'dice-' + xuxxac[1]">
         <div class="face1">1</div>
         <div class="face2">2</div>
         <div class="face3">3</div>
@@ -26,7 +26,17 @@
 export default {
   name: "xucxac",
 
-  data() {},
+  data() {
+      return{
+      
+    }
+  },
+  props:{
+      xuxxac:{
+          type: Array,
+          default: [1,1],
+      }
+  }
 };
 </script>
 <style>

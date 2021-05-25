@@ -27,16 +27,32 @@ Hold -> Lấy điểm
     2. Chưa đủ điểm -> Cộng dồn 'ĐIỂM CHÍNH THỨC' => Đổi lượt chơi
 
  -->
-      <xuc-xac />
-      <dieu-khien/>
-      <nguoi-choi
-        v-on:dangchoi="dangchoi"
+      <xuc-xac
+
+        v-bind:xuxxac="xuxxac"
       
+       />
+      <dieu-khien
+
+        v-on:clicknewgame="clicknewgame"
+        v-on:xoayxucxac="xoayxucxac"
+
+      
+      />
+      <nguoi-choi
+        v-bind:trangthainguoidangchoi="trangthainguoidangchoi"
+        v-bind:diemcaocuanguoichoi="diemcaocuanguoichoi"
+        v-bind:diemhientai="diemhientai"
+  
       />
       
       
     </div>
-    <luat-choi/>
+    <luat-choi
+      v-on:dahieuluat="dahieuluat"
+      v-bind:hienthipopup="hienthipopup"
+    
+    />
 
   </div>
 </template>
@@ -51,15 +67,95 @@ export default {
   name: "app",
   data() {
     return {
-      dangchoi: true,
-      trangthainguoidangchoi: 1,
+      dangchoi: false,
+      trangthainguoidangchoi: 0,
       diemcaocuanguoichoi: [30,50],
       diemhientai: 14,
-      xuxxac: [1,5],
+      hienthipopup: false,
+      xuxxac: [1,4],
       gioihanchienthang: 60,
 
     };
   },
+  methods:{
+    clicknewgame(){
+
+      // hiển thị popup
+      this.hienthipopup = true;
+      
+    },
+
+    dahieuluat(){
+
+      // ẩn popup
+      this.hienthipopup = false;
+      
+      //reset giá trị về 0
+      this.dangchoi = true
+      this.trangthainguoidangchoi = 0;
+      this.diemhientai = 0;
+      this.diemcaocuanguoichoi = [0,0];
+    },
+
+    xoayxucxac(){
+      if(this.dangchoi ==true){
+        var xx1 = Math.floor(Math.random() * 6) + 1;
+        var xx2 = Math.floor(Math.random() * 6) + 1;
+        var xxplus = xx1 + xx2;
+        console.log(xx1,xx2);
+        this.xuxxac = [xx1,xx2];
+        if(xx1 == 1 || xx2 == 1){
+          this.diemhientai = 0;
+
+          // lien quan den ES6  - xu ly ham bat dong bo
+          let trangthainguoidangchoi = this.trangthainguoidangchoi;
+
+          setTimeout(function(){
+            alert(`Người chơi số ${trangthainguoidangchoi + 1} đã bị mất lượt chơi`);
+
+          },100)
+
+          this.chuyennguoichoi();
+        }
+        else{
+          this.diemhientai = this.diemhientai + xxplus;
+
+        }
+
+        
+        
+      }
+      else{
+        alert('vui long nhan vao nu choi moi');
+      }
+    },
+
+    nutgiudiem(){
+      if(this.dangchoi){
+        let {diemcaocuanguoichoi,diemhientai,trangthainguoidangchoi} = this;
+        let diemcu = diemcaocuanguoichoi[trangthainguoidangchoi]
+
+        this.diemcaocuanguoichoi[trangthainguoidangchoi] = diemcu + diemhientai;
+        
+        console.log(this.diemcaocuanguoichoi);
+
+        // this.diemcaocuanguoichoi[this.trangthainguoidangchoi] = this.diemcaocuanguoichoi[trangthainguoidangchoi] + this.diemhientai;
+      }
+
+      else{
+        alert('vui long bam vao nut choi moi');
+      }
+      
+    },
+
+    chuyennguoichoi(){
+      this.diemhientai = 0;
+
+      // cái trạng thái người chơi nếu nó = 0 thì chuyển thành 1,  nếu nó bằng 1 khác !0 thì nó sẽ chuyển về 0
+      this.trangthainguoidangchoi = this.trangthainguoidangchoi == 0 ? 1 : 0;
+    }
+  }
+
 };
 </script>
 
