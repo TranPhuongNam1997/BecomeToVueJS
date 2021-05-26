@@ -1,8 +1,13 @@
 <template>
   <div class="wrap-player">
     <!-- v-bind class                       tên class   điều kiện -->
-    <div class="player-panel" v-bind:class="{ active: trangthainguoidangchoi == 0 }">
-      <div class="player-name">player 1</div>
+    <!-- Chỉ có một trong hai -->
+    <div class="player-panel" v-bind:class="{ 
+        active: trangthainguoidangchoi == 0 && !this.kiemtrachienthang,
+        winner: trangthainguoidangchoi == 0 && this.kiemtrachienthang
+      
+       }">
+      <div class="player-name">{{tennguoichoi(0)}}</div>
       <div class="player-score">{{diemcaocuanguoichoi[0]}}</div>
       <div class="player-current-box">
         <div class="player-current-label">Current</div>
@@ -11,8 +16,11 @@
       </div>
     </div>
 
-    <div class="player-panel" v-bind:class="{ active: trangthainguoidangchoi == 1}">
-      <div class="player-name">Player 2</div>
+    <div class="player-panel" v-bind:class="{ 
+        active: trangthainguoidangchoi == 1 && !this.kiemtrachienthang,
+        winner: trangthainguoidangchoi == 1 && this.kiemtrachienthang
+      }">
+      <div class="player-name">{{tennguoichoi(1 )}}</div>
       <div class="player-score">{{diemcaocuanguoichoi[1]}}</div>
       <div class="player-current-box">
         <div class="player-current-label">Current</div>
@@ -30,6 +38,16 @@ export default {
       
     }
   },
+  methods:{
+    tennguoichoi(index){
+      var tenmacdinh = 'Player' + (index + 1);
+      // nguoi hien tai , co nguoi thang cuoc
+      if(this.trangthainguoidangchoi == index && this.kiemtrachienthang ){
+        tenmacdinh = 'Chiến thắng';
+      }
+      return tenmacdinh;
+    }
+  },
 
   props:{
     trangthainguoidangchoi:{
@@ -45,6 +63,10 @@ export default {
       type: Number,
       default: 0
     },
+    kiemtrachienthang:{
+      type: Boolean,
+      default: false
+    }
 
 
   }

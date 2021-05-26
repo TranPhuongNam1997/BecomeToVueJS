@@ -16,7 +16,31 @@
       <i class="ion-ios-download-outline"></i>Giữ điểm
     </button>
 
-    <input type="number" placeholder="Final score" class="final-score" />
+    <!-- v-bind:value="gioihanchienthang"   ~~ lấy dữ liệu prop truyền vào đây -->
+
+    <!-- v-on:input="$emit('thaydoigioihan',$event)" ~~ truyền dữ liệu ra ngoài app -->
+    <input
+      v-bind:disabled="dangchoi"
+      v-bind:value="gioihanchienthang"
+      v-on:input="$emit('thaydoigioihan',$event)"
+    
+     type="number" placeholder="Final score" class="final-score" />
+    <!-- 
+      Ràng buộc dữ liệu 1 chiều thì khi thay đổi lại ngoài giao diện thì bên trong không phản ứng lại
+      1 chiều từ data vào input  (v-bind:value)
+
+      2 chiều là dùng v-model thì nó sẽ thay đổi theo
+      lưu ý dữ liệu thu thập từ ô input thì đều là dang chuỗi 
+
+      nguyên tắc là props không được thay đổi từ component con 
+
+
+
+
+
+     -->
+
+
   </div>
 </template>
 <script>
@@ -33,6 +57,18 @@ export default {
     //   this.; 
 
     // },
+    
+  },
+  // khái niệm mới props minh có thể khai báo thành 1 cái mảng có thể là number có thể là string
+  props:{
+    gioihanchienthang:{
+      type: [Number,String],
+      default: 100
+    },
+    dangchoi:{
+      type: Boolean,
+      default: false
+    }
   }
 
 

@@ -34,12 +34,17 @@ Hold -> Lấy điểm
        />
       <dieu-khien
 
+        v-bind:dangchoi="dangchoi"
         v-on:clicknewgame="clicknewgame"
         v-on:xoayxucxac="xoayxucxac"
+        v-on:nutgiudiem="nutgiudiem"
+        v-bind:gioihanchienthang="gioihanchienthang"
+        v-on:thaydoigioihan="thaydoigioihan"
 
       
       />
       <nguoi-choi
+        v-bind:kiemtrachienthang="kiemtrachienthang"
         v-bind:trangthainguoidangchoi="trangthainguoidangchoi"
         v-bind:diemcaocuanguoichoi="diemcaocuanguoichoi"
         v-bind:diemhientai="diemhientai"
@@ -73,7 +78,8 @@ export default {
       diemhientai: 14,
       hienthipopup: false,
       xuxxac: [1,4],
-      gioihanchienthang: 60,
+      gioihanchienthang: 10,
+      
 
     };
   },
@@ -96,7 +102,16 @@ export default {
       this.diemhientai = 0;
       this.diemcaocuanguoichoi = [0,0];
     },
+    thaydoigioihan(e){
+      // ep ve so nguyen
+      if(isNaN(parseInt(e.target.value))){
+        this.gioihanchienthang = '';
+      }
+      else{
+        this.gioihanchienthang = parseInt(e.target.value);
+      }
 
+    },
     xoayxucxac(){
       if(this.dangchoi ==true){
         var xx1 = Math.floor(Math.random() * 6) + 1;
@@ -132,12 +147,39 @@ export default {
 
     nutgiudiem(){
       if(this.dangchoi){
-        let {diemcaocuanguoichoi,diemhientai,trangthainguoidangchoi} = this;
+
+        // khai niệm destrucring ES6
+
+        let {diemcaocuanguoichoi, diemhientai, trangthainguoidangchoi} = this;
+
         let diemcu = diemcaocuanguoichoi[trangthainguoidangchoi]
 
-        this.diemcaocuanguoichoi[trangthainguoidangchoi] = diemcu + diemhientai;
+        // clone lại data  đẻ nó khác nhau về mặt ô nhớ
+
+        // let cloneDiemCaoNguoiChoi = [...diemcaocuanguoichoi];
+
+        //     cloneDiemCaoNguoiChoi[trangthainguoidangchoi] = diemcu + diemhientai;
+
+        // this.diemcaocuanguoichoi = cloneDiemCaoNguoiChoi;
+
+        // cach2 
+
+        //       thằng muốn thay đổi             key                    giá trị mới
+
+        this.$set(this.diemcaocuanguoichoi, trangthainguoidangchoi , diemcu + diemhientai)
+
+
         
-        console.log(this.diemcaocuanguoichoi);
+        if(!this.kiemtrachienthang){
+          this.chuyennguoichoi();
+
+        }
+
+
+
+        // tuy nhiên đến đây giao diện vẫn chwua phản ứng lại
+        // đo chỉ thay đổi phần tử trong 1 ô nhớ thì nó sẽ không phản ứng lại
+        //tạo ra 1 array mới và coppy dữ liệu từ array cũ
 
         // this.diemcaocuanguoichoi[this.trangthainguoidangchoi] = this.diemcaocuanguoichoi[trangthainguoidangchoi] + this.diemhientai;
       }
@@ -153,6 +195,19 @@ export default {
 
       // cái trạng thái người chơi nếu nó = 0 thì chuyển thành 1,  nếu nó bằng 1 khác !0 thì nó sẽ chuyển về 0
       this.trangthainguoidangchoi = this.trangthainguoidangchoi == 0 ? 1 : 0;
+    }
+  },
+  computed:{
+    kiemtrachienthang(){
+      let{diemcaocuanguoichoi,gioihanchienthang} = this;
+      if(diemcaocuanguoichoi[0] >= gioihanchienthang || diemcaocuanguoichoi[1] >= gioihanchienthang){
+        // dung cuoc choi
+        this.dangchoi = false;
+        return true;
+      }
+      else{
+        return false;
+      }
     }
   }
 
