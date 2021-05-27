@@ -83,7 +83,7 @@ export default {
     },
     props:{
 		item:{
-			type: Array,
+			type: Object,
 			default: [],
 		},
         index: Number

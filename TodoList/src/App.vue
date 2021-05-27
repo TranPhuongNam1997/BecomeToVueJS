@@ -17,6 +17,9 @@
                />
                
           </div>
+          <ul>
+              <li v-for="(item,index) in info" v-bind:key="index">{{item.name}}</li>
+          </ul>
     </div>
 </template>
 
@@ -26,6 +29,11 @@ import DanhSachBang from './Component/DanhSachBang.vue';
 import TienIch from './Component/TienIch.vue';
 import TieuDeTodo from './Component/TieuDeTodo.vue';
 import danhsachTask from './DuLieuAo/task';
+
+
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 
 export default {
@@ -39,7 +47,17 @@ export default {
   data() {
      return {
           danhsachTask : danhsachTask,
+          info: null
      };
+  },
+
+
+  mounted () {
+    axios
+      .get('https://609f30e8c512c20017dcce38.mockapi.io/api/todolist/nameabc')
+      .then(abc => {
+        this.info = abc.data;
+      })
   },
 };
 </script>
