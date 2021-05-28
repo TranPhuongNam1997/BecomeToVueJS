@@ -6,7 +6,9 @@
 
                <div class="row">
 
-                    <tien-ich/>
+                    <tien-ich
+                        v-on:sapxeptendesc="sapxeptendesc"
+                    />
 
                     <component-form/>
                </div>
@@ -17,9 +19,9 @@
                />
                
           </div>
-          <ul>
+          <!-- <ul>
               <li v-for="(item,index) in info" v-bind:key="index">{{item.name}}</li>
-          </ul>
+          </ul> -->
     </div>
 </template>
 
@@ -50,6 +52,11 @@ export default {
           info: null
      };
   },
+  methods:{
+      sapxeptendesc(){
+          alert('asdasd');
+      }
+  },
 
 
   mounted () {
@@ -58,7 +65,8 @@ export default {
       .then(abc => {
         this.info = abc.data;
       })
-  },
+    },
+    
 };
 </script>
 

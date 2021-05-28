@@ -2,7 +2,10 @@
     <div class="col-12 col-lg-6">
         <div class="row">
             
-            <tien-ich-sap-xep/>
+            <tien-ich-sap-xep
+                v-on:sapxeptendesc="sapxeptendesc"
+                v-on:click="sapxeptendesc"
+            />
 
             <tien-ich-tim-kiem/>
 
@@ -18,6 +21,11 @@ export default {
     data(){
         return{
 
+        }
+    },
+    methods:{
+        sapxeptendesc(){
+          sapxeptendesc();
         }
     }
 }
