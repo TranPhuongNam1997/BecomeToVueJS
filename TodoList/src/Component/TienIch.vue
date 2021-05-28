@@ -7,7 +7,10 @@
                 v-on:click="sapxeptendesc"
             />
 
-            <tien-ich-tim-kiem/>
+            <tien-ich-tim-kiem
+                v-bind:textdulieusearch="textdulieusearch"
+                v-on:VlInput="VlInput"
+            />
 
         </div>
     </div>
@@ -26,6 +29,16 @@ export default {
     methods:{
         sapxeptendesc(){
           sapxeptendesc();
+        },
+        VlInput(even){
+            this.$emit('VlInput',even);
+        },
+        
+    },
+    props:{
+        textdulieusearch:{
+            type: String,
+            default: ''
         }
     }
 }

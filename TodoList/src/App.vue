@@ -8,13 +8,20 @@
 
                     <tien-ich
                         v-on:sapxeptendesc="sapxeptendesc"
+                        v-bind:textdulieusearch="textdulieusearch"
+                        v-on:VlInput="VlInput"
                     />
 
-                    <component-form/>
+                    <component-form
+
+                        v-bind:hienthiform="hienthiform"
+                        v-on:togglethemtask="togglethemtask"
+                    
+                    />
                </div>
 
                <danh-sach-bang
-                    v-bind:danhsachTask="danhsachTask"
+                    v-bind:danhsachTask="danhsachtashtimkiem"
                
                />
                
@@ -47,15 +54,43 @@ export default {
     TieuDeTodo
   },
   data() {
-     return {
-          danhsachTask : danhsachTask,
-          info: null
+    return {
+        danhsachTask : danhsachTask,
+        //   info: null
+        hienthiform: false,
+        textdulieusearch: '',
+        
      };
+  },
+  computed:{
+      danhsachtashtimkiem(){
+          const {textdulieusearch} = this;
+          console.log(textdulieusearch)
+          var ItemMoi = [];
+          this.danhsachTask.forEach(function(item,index){
+            if(item.tenTask.includes(textdulieusearch) == true){
+                ItemMoi.push(item);
+            }
+            // item.tenTask.includes(this.textdulieusearch);
+            console.log(ItemMoi)
+          })
+
+          return ItemMoi;
+      }
   },
   methods:{
       sapxeptendesc(){
           alert('asdasd');
-      }
+      },
+      togglethemtask(){
+          //để dùng toggle thì mình dùng phủ định lại thôi :D
+          this.hienthiform = !this.hienthiform;
+      },
+      VlInput(e){
+          console.log(e);
+          this.textdulieusearch = e;
+      },
+      
   },
 
 
