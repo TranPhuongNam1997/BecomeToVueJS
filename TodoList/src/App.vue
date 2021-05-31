@@ -7,9 +7,11 @@
                <div class="row">
 
                     <tien-ich
-                        v-on:sapxeptendesc="sapxeptendesc"
                         v-bind:textdulieusearch="textdulieusearch"
                         v-on:VlInput="VlInput"
+                        v-bind:sapxeptheo="sapxeptheo"
+                        v-bind:kieusapxep="kieusapxep"
+                        v-on:hamsapxep="hamsapxep"
                     />
 
                     <component-form
@@ -21,8 +23,8 @@
                </div>
 
                <danh-sach-bang
-                    v-bind:danhsachTask="danhsachtashtimkiem"
-               
+                    v-bind:danhsachTask="danhsachTaskSort"
+                    v-on:deleteItem="deleteItem"
                />
                
           </div>
@@ -59,37 +61,119 @@ export default {
         //   info: null
         hienthiform: false,
         textdulieusearch: '',
+        sapxeptheo: 'name',
+        kieusapxep: 'asc'
         
      };
   },
   computed:{
       danhsachtashtimkiem(){
           const {textdulieusearch} = this;
-          console.log(textdulieusearch)
+          //cach 1 
           var ItemMoi = [];
           this.danhsachTask.forEach(function(item,index){
-            if(item.tenTask.includes(textdulieusearch) == true){
+            //           hàm chữ thường - hàm tìm kiếm          hàm chữ thường
+            if(item.tenTask.toLowerCase().includes(textdulieusearch.toLowerCase()))
                 ItemMoi.push(item);
-            }
-            // item.tenTask.includes(this.textdulieusearch);
-            console.log(ItemMoi)
+
           })
 
+          //cach 2 
+
+        //   var itemMoi = this.danhsachTask.filter(item => {
+        //       return item.tenTask.toLowerCase().includes(textdulieusearch.toLowerCase())
+        //   })
+
+
+
           return ItemMoi;
+      },
+      danhsachTaskSort(){
+          //clone data để đảm bảo chop danhsachTask không bị thay đổi
+          var danhsachTask = [...this.danhsachtashtimkiem];
+        // danhsachTask.sort(this.sosanh);
+
+          if(this.sapxeptheo === 'name'){
+              danhsachTask.sort(this.sosanhTen);
+              
+          }
+          else if(this.sapxeptheo === 'mucdo'){
+              danhsachTask.sort(this.sosanhmucdo);
+          }
+          return danhsachTask;
       }
   },
   methods:{
-      sapxeptendesc(){
-          alert('asdasd');
-      },
-      togglethemtask(){
+        deleteItem(data){
+            //cach 1 
+            var idx = -1;
+            for(var i = 0; i < this.danhsachTask.length ; i++){
+                if(this.danhsachTask[i].id = data.id){
+                    idx = i;
+                    break;
+                }
+            }    
+            if(idx !== -1) this.danhsachTask.splice(idx,1)        
+
+
+
+
+
+
+            // cach 2 dung filter
+            // this.danhsachTask = this.danhsachTask.filter(item => item.id !== data.id);
+        },
+
+        // sosanh(a,b){
+
+        //     var sosapxeptheo = this.kieusapxep === 'asc'? - 10 : 100
+        //     if (a[this.sapxeptheo] < b[this.sapxeptheo]) {
+        //         return sosapxeptheo;
+        //     }
+        //     if (a[this.sapxeptheo] > b[this.sapxeptheo]) {
+        //         return sosapxeptheo * (-1);
+        //     }
+        //     return 0;
+
+        // },
+        togglethemtask(){
           //để dùng toggle thì mình dùng phủ định lại thôi :D
           this.hienthiform = !this.hienthiform;
-      },
-      VlInput(e){
-          console.log(e);
+        },
+
+        VlInput(e){
           this.textdulieusearch = e;
-      },
+        },
+
+        hamsapxep(data){
+            this.sapxeptheo = data.data1;
+            this.kieusapxep = data.data2;
+        },
+
+        //ham so sanh
+        sosanhTen(a,b){
+
+            var sosapxeptheo = this.kieusapxep === 'asc'? - 10 : 100
+            if (a.tenTask < b.tenTask) {
+                return sosapxeptheo;
+            }
+            if (a.tenTask > b.tenTask) {
+                return sosapxeptheo * (-1);
+            }
+            return 0;
+
+        },
+        sosanhmucdo(a,b){
+            var sosapxeptheo = this.kieusapxep === 'asc'? - 1 : 1
+            if (a.level < b.level) {
+                return sosapxeptheo;
+            }
+            if (a.level > b.level) {
+                return sosapxeptheo * (-1);
+            }
+            return 0;
+        }
+
       
   },
 

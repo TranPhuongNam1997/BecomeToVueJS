@@ -23,7 +23,7 @@ export default {
     name:'formthemmoi',
     data(){
         return{
-
+          
         }
     },
     props:{
@@ -35,5 +35,5 @@ export default {
 }
 </script>
 <style  scoped>
-
+     
 </style>

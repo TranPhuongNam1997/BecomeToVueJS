@@ -3,8 +3,9 @@
         <div class="row">
             
             <tien-ich-sap-xep
-                v-on:sapxeptendesc="sapxeptendesc"
-                v-on:click="sapxeptendesc"
+                v-bind:sapxeptheo="sapxeptheo"
+                v-bind:kieusapxep="kieusapxep"
+                v-on:hamsapxep="hamsapxep"
             />
 
             <tien-ich-tim-kiem
@@ -23,23 +24,37 @@ export default {
     name: 'tienich',
     data(){
         return{
-
+            
         }
     },
     methods:{
-        sapxeptendesc(){
-          sapxeptendesc();
-        },
+        
         VlInput(even){
             this.$emit('VlInput',even);
         },
+        hamsapxep(data){
+            this.$emit('hamsapxep',data);
+            // console.log('data tienichsapxep',data)
+            
+            
+        }
         
     },
     props:{
         textdulieusearch:{
             type: String,
             default: ''
-        }
+        },
+        sapxeptheo:{
+            type: String,
+            default: 'name'
+        },
+
+        kieusapxep:{
+            type: String,
+            default: 'asc'
+        },
+
     }
 }
 </script>

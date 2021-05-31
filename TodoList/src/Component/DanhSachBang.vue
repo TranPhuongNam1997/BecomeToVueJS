@@ -11,13 +11,19 @@
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody v-if="danhsachTask.length !== 0">
 				<item-danh-sach-bang
 					v-for="(item,index) in danhsachTask" v-bind:key="item.id"
 					v-bind:item="item"
 					v-bind:index="index + 1"
-					
+					v-on:deleteItem="deleteItem"
 				/>
+			</tbody>
+			<tbody v-else>
+				<tr>
+					<td class="text-center" colspan=4 >Không có dữ liệu hiển thị</td>
+				</tr>
+				
 			</tbody>
 		</table>
 	</div>
@@ -28,12 +34,18 @@ export default {
   	components: { ItemDanhSachBang },
 	name:'danhsachbang',
 	data() {
-		return {};
+		return {}; 
 	},
 	props:{
 		danhsachTask:{
 			type:Array,
 			default: [],
+		}
+	},
+	methods:{
+		deleteItem(data){
+			console.log('xoa task ', data)
+			this.$emit('deleteItem', data)
 		}
 	}
 };
