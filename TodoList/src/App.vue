@@ -1,11 +1,8 @@
 <template>
     <div id="app">
           <div class="container mt-5">
-
                <tieu-de-todo/>
-
                <div class="row">
-
                     <tien-ich
                         v-bind:textdulieusearch="textdulieusearch"
                         v-on:VlInput="VlInput"
@@ -13,20 +10,19 @@
                         v-bind:kieusapxep="kieusapxep"
                         v-on:hamsapxep="hamsapxep"
                     />
-
                     <component-form
-
+                        v-on:submitForm="submitForm"
                         v-bind:hienthiform="hienthiform"
                         v-on:togglethemtask="togglethemtask"
-                    
+                        v-bind:taskSelected="taskSelected"
+                        v-on:updateform="updateform"
                     />
                </div>
-
                <danh-sach-bang
                     v-bind:danhsachTask="danhsachTaskSort"
                     v-on:deleteItem="deleteItem"
+                    v-on:btnEdit="btnEdit"
                />
-               
           </div>
           <!-- <ul>
               <li v-for="(item,index) in info" v-bind:key="index">{{item.name}}</li>
@@ -62,7 +58,8 @@ export default {
         hienthiform: false,
         textdulieusearch: '',
         sapxeptheo: 'name',
-        kieusapxep: 'asc'
+        kieusapxep: 'asc',
+        taskSelected: null
         
      };
   },
@@ -103,7 +100,20 @@ export default {
           return danhsachTask;
       }
   },
+  
+  
   methods:{
+        updateform(data){
+            console.log(data)
+        },
+        btnEdit(data){
+            console.log(data);
+            this.taskSelected = data;
+            this.hienthiform = true;
+        },
+        submitForm(data){
+            this.danhsachTask.push(data);
+        },
         deleteItem(data){
             //cach 1 
             var idx = -1;
@@ -112,13 +122,8 @@ export default {
                     idx = i;
                     break;
                 }
-            }    
+            }
             if(idx !== -1) this.danhsachTask.splice(idx,1)        
-
-
-
-
-
 
             // cach 2 dung filter
             // this.danhsachTask = this.danhsachTask.filter(item => item.id !== data.id);
@@ -137,8 +142,11 @@ export default {
 
         // },
         togglethemtask(){
+          if(this.hienthiform ==true) taskSelected = null
+          
           //để dùng toggle thì mình dùng phủ định lại thôi :D
           this.hienthiform = !this.hienthiform;
+
         },
 
         VlInput(e){
@@ -173,8 +181,6 @@ export default {
             }
             return 0;
         }
-
-      
   },
 
 

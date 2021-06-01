@@ -8,7 +8,12 @@
             <span class="badge " v-bind:class="tenClass" >{{laytenmucdo}}</span>
         </td>
         <td>
-            <button type="button" class="btn btn-warning">Sửa</button>
+            <button
+                v-on:click="btnEdit"
+                type="button" 
+                class="btn btn-warning">
+                Sửa
+            </button>
             <button type="button" v-on:click="deleteItem" class="btn btn-danger">Xóa</button>
         </td>
     </tr>
@@ -38,14 +43,18 @@ export default {
 			type: Object,
 			default: [],
 		},
-        index: Number
+        index: Number,
+        
 	},
     methods:{
         deleteItem(){
             if(confirm('Bạn có muốn xóa TASK ' + this.item.name) +' không'){
                 this.$emit('deleteItem',this.item)
             }
-        }
+        },
+        btnEdit(){
+            this.$emit('btnEdit',this.item);
+        },
     }
 }
 </script>

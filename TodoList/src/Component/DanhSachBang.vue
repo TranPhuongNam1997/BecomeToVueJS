@@ -17,6 +17,7 @@
 					v-bind:item="item"
 					v-bind:index="index + 1"
 					v-on:deleteItem="deleteItem"
+					v-on:btnEdit="btnEdit"
 				/>
 			</tbody>
 			<tbody v-else>
@@ -40,12 +41,17 @@ export default {
 		danhsachTask:{
 			type:Array,
 			default: [],
-		}
+		},
+		
 	},
 	methods:{
 		deleteItem(data){
 			console.log('xoa task ', data)
 			this.$emit('deleteItem', data)
+		},
+		btnEdit(data){
+			this.$emit('btnEdit',data);
+			console.log(data);
 		}
 	}
 };
