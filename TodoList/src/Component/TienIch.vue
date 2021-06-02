@@ -34,9 +34,6 @@ export default {
         },
         hamsapxep(data){
             this.$emit('hamsapxep',data);
-            // console.log('data tienichsapxep',data)
-            
-            
         }
         
     },

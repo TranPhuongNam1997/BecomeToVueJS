@@ -88,8 +88,6 @@ export default {
       danhsachTaskSort(){
           //clone data để đảm bảo chop danhsachTask không bị thay đổi
           var danhsachTask = [...this.danhsachtashtimkiem];
-        // danhsachTask.sort(this.sosanh);
-
           if(this.sapxeptheo === 'name'){
               danhsachTask.sort(this.sosanhTen);
               
@@ -99,6 +97,23 @@ export default {
           }
           return danhsachTask;
       }
+  },
+  watch:{
+      danhsachTask: function(newtask){
+        var taskStrimg= JSON.stringify(newtask);
+        localStorage.setItem('tasks',taskStrimg);
+      }
+  },
+  created(){
+      // lay danhsachTask trong localStorage
+      let tasks = localStorage.getItem('tasks');
+      if(tasks !== null){
+          this.danhsachTask = JSON.parse(tasks);
+      }
+      else{
+          this.danhsachTask = [];
+      }
+
   },
   
   
@@ -110,6 +125,7 @@ export default {
             console.log('index: ',index , data.id);
             //áp dụng splice dể tiến hành xóa và thêm mới giá trị 
             if(index !== -1){
+                //                   vị trí ptu   obj truyền vao
                 this.danhsachTask.splice(index,1,data)
             }
         },
@@ -137,19 +153,6 @@ export default {
             // cach 2 dung filter
             // this.danhsachTask = this.danhsachTask.filter(item => item.id !== data.id);
         },
-
-        // sosanh(a,b){
-
-        //     var sosapxeptheo = this.kieusapxep === 'asc'? - 10 : 100
-        //     if (a[this.sapxeptheo] < b[this.sapxeptheo]) {
-        //         return sosapxeptheo;
-        //     }
-        //     if (a[this.sapxeptheo] > b[this.sapxeptheo]) {
-        //         return sosapxeptheo * (-1);
-        //     }
-        //     return 0;
-
-        // },
         togglethemtask(){
             console.log('da bam toggle form')
           if(this.hienthiform == true) this.taskSelected = null

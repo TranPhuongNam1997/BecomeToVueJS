@@ -5,15 +5,13 @@
           <form-them-moi
                v-on:clickthemtask="clickthemtask"
                v-bind:hienthiform="hienthiform"
-          
           />
-
           <!-- ADD : END -->
 
           <form
-              action=""
-              method="POST"
-              class="form-inline justify-content-between"
+               action=""
+               method="POST"
+               class="form-inline justify-content-between"
                v-if="hienthiform"
                >
                <div class="form-group">
@@ -46,14 +44,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default {
   components: { FormThemMoi },
-    name: 'componentform',
-    data(){
-        return{
-          tentask: '',
-          mucdo: 0,
-        }
-    },
-    props:{
+     name: 'componentform',
+     data(){
+          return{
+               tentask: '',
+               mucdo: 0,
+          }
+     },
+     props:{
           hienthiform:{
               type:  Boolean,
               default: false
@@ -62,7 +60,7 @@ export default {
 			type: Object,
 			default: null
 		}
-    },
+     },
     //chạy khi bất cứ khi nào có sự thay đổi
      // beforeUpdate(){
 
@@ -75,41 +73,38 @@ export default {
                if(newdata !== null){
                     this.tentask = newdata.tenTask;
                     this.mucdo = newdata.level;
-                    console.log('hihii',newdata,olddata)
                }
-               // console.log('watch',newdata,olddata)
           }
      },
      methods:{
-         clickthemtask(){
-              this.$emit('togglethemtask');
-         },
-         huybothemtask(){
-              this.$emit('togglethemtask');
+          clickthemtask(){
+               this.$emit('togglethemtask');
+          },
+          huybothemtask(){
+               this.$emit('togglethemtask');
                this.resetdata();
-         },
-         submitForm(){
-              let objtask = {
+          },
+          submitForm(){
+               let objtask = {
                    id: uuidv4(),
                    tenTask : this.tentask,
                    level: parseInt(this.mucdo)
-              }
-              console.log(objtask);
+               }
 
-              this.$emit('submitForm',objtask);
-              this.huybothemtask();
-         },
-         resetdata(){
-              this.tentask = '';
-              this.mucdo = '';
-         },
-         updateform(){
-              let objEdit = {
+               this.$emit('submitForm',objtask);
+               this.huybothemtask();
+          },
+          resetdata(){
+               this.tentask = '';
+               this.mucdo = '';
+          },
+          updateform(){
+               let objEdit = {
                    id: this.taskSelected.id,
                    tenTask: this.tentask,
                    level: parseInt(this.mucdo)
-              }
-              this.$emit('updateform',objEdit);
+               }
+               this.$emit('updateform',objEdit);
          }
     }
 }
@@ -117,4 +112,4 @@ export default {
 </script>
 <style scoped>
 
-</style>
+</style>  

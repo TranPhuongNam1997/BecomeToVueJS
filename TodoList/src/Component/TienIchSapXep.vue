@@ -24,7 +24,6 @@ export default {
         hamsapxep(data1,data2){
             let data = {data1,data2};
             this.$emit('hamsapxep',data);
-            // console.log('data tienichsapxep',data)
         }
     },
     props:{
