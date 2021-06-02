@@ -104,12 +104,21 @@ export default {
   
   methods:{
         updateform(data){
-            console.log(data)
+            console.log('update',data)
+            //Tìm index tương ứng với data.id nằm trong danhsachTask gốc
+            let index = this.danhsachTask.findIndex(item => item.id === data.id);
+            console.log('index: ',index , data.id);
+            //áp dụng splice dể tiến hành xóa và thêm mới giá trị 
+            if(index !== -1){
+                this.danhsachTask.splice(index,1,data)
+            }
         },
         btnEdit(data){
+            this.hienthiform = true;
+
             console.log(data);
             this.taskSelected = data;
-            this.hienthiform = true;
+            console.log('handle vuejs edit',this.taskSelected)
         },
         submitForm(data){
             this.danhsachTask.push(data);
@@ -142,7 +151,8 @@ export default {
 
         // },
         togglethemtask(){
-          if(this.hienthiform ==true) taskSelected = null
+            console.log('da bam toggle form')
+          if(this.hienthiform == true) this.taskSelected = null
           
           //để dùng toggle thì mình dùng phủ định lại thôi :D
           this.hienthiform = !this.hienthiform;

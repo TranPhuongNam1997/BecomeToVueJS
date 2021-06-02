@@ -29,8 +29,8 @@
                     </select>
                </div>
 
-               <button v-if="this.taskSelected === null" type="button" class="btn btn-primary" v-on:click="submitForm">Gửi</button>
-               <button v- else type="button" class="btn btn-primary" v-on:click="updateform">Cập nhật</button>
+               <button v-if="taskSelected === null" type="button" class="btn btn-primary" v-on:click="submitForm">Gửi</button>
+               <button v-else type="button" class="btn btn-primary" v-on:click="updateform">Cập nhật</button>
                
                <button 
                     type="button" 
@@ -69,12 +69,13 @@ export default {
      // },
 
      // //lắng nghe sự thay đổi dữ liệu của riêng từng phần tử chứ không phải toàn bộ component
-     
+     // bộ theo dõi
      watch:{
           taskSelected: function(newdata,olddata){
                if(newdata !== null){
                     this.tentask = newdata.tenTask;
                     this.mucdo = newdata.level;
+                    console.log('hihii',newdata,olddata)
                }
                // console.log('watch',newdata,olddata)
           }
@@ -112,6 +113,7 @@ export default {
          }
     }
 }
+
 </script>
 <style scoped>
 
