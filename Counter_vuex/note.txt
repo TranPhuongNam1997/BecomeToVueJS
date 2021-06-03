@@ -1,0 +1,35 @@
+Vue Instanse
+    Data -> Dữ liệu của thực thể Vue Đó
+
+
+Store 
+    State => Giống như Data của từng đối tượng Vue (Từng Component)
+        mapState -> map vào computed
+
+    Getters
+        mapGetters -> map vào computed
+
+    mutations -> Chứa các method dùng để thay đổi giá trị trong state
+        -> Toàn bộ mã nguồn trong mutations là đồng bộ (Không được phép tương tác, gọi dữ liệu dến server ở trong mutations)
+        -> mapMutations -> map vào method
+
+    actions -> Chứa các method dùng để tương tác server, xử lí dữ liệu -> Truyền dữ liệu đó vào Mutations
+        -> mapActions -> map vào method
+
+Computed 
+    get -> Lấy dữ ra render vào template html
+    set -> Thiết lập dữ liệu 
+
+    Khi user click button tăng computed count lên 1 đơn vị -> set() được chạy
+        -> Thay đổi lại count nằm trong store -> VueJs kích hoạt hệ thống phản ứng trong Store 
+        -> Đẩy dữ liệu về lại các Component có sử dụng 'count'
+
+Có nhất thiết phải dùng setter của computed để thay đổi trực tiếp dữ liệu trong state của Store?
+Có nên thay đổi trực tiếp state trong từng Component hay không? -> Có những cơ chế khác
+Theo quy tắc có phải luôn luôn get data thông qua getters? 
+    mapGetters
+Tại sao cú pháp mapGetters lại có thêm dấu "..."?
+
+Component -> Dispatch một Action -> Commit một Mutation -> Thay đổi State tương ứng
+
+    Lưu ý: Trong một action mình có thể kích hoạt một action khác thông qua context.dispatch('')
