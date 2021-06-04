@@ -21,35 +21,16 @@ export default {
         ])
     },
     methods: {
-        // ...mapActions([
-        //     'incrementAction',
-        //     'decrementAction'
-        // ]),
-        ...mapActions({
-            'ABC': 'incrementAction',
-            'DEF': 'decrementAction'
-        }),
-        plus() {
-            // console.log("$store plus = ", this.$store);
-            console.log("Plus Method  CounterThree.vue")
-            // this.$store.commit('increment', 10);
-            let obj = {
-                number: 10
-            }
-            // this.$store.dispatch('incrementAction', obj);
-            // this.incrementAction(obj);
-            this.ABC(obj);
+        plus(){
+            console.log('plus increment');
+            this.$store.commit('increment',2)
         },
-        minus() {
-            console.log("Minus Method  CounterThree.vue")
-            // this.$store.commit('decrement', 10);
-            let obj = {
-                number: 10
-            }
-            // this.$store.dispatch('decrementAction', obj)
-            // this.decrementAction(obj);
-            this.DEF(obj);
-        }
+        minus(){
+            console.log('minus decrement');
+
+            this.$store.commit('decrement',2)
+
+        },
     }
 }
 </script>

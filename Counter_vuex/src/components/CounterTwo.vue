@@ -13,19 +13,15 @@ export default {
     name: 'counter-two',
     data() {
         return {
-            count: 0
+            
         }
     },
     computed: {
-        // ...mapGetters([
-        //     'count',
-        //     'value',
-        //     'countDouble'
-        // ]),
-        // ...mapState([
-        //     'value2'
-        // ])
-    }
+        //nếu viết dữ liệu thì đây chỉ là phương thức get dữ liệu
+        count(){
+            return this.$store.state.count
+        }
+    },
 }
 </script>
 

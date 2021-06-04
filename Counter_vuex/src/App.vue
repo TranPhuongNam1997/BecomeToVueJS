@@ -6,14 +6,14 @@
 		<hr>
 		<counter-two />
 		<hr>
-		<!-- <counter-three /> -->
+		<counter-three />
 	</div>
 </template>
 
 <script>
 import CompCounter from './components/CompCounter.vue';
 import CounterTwo from './components/CounterTwo.vue';
-// import CounterThree from './components/CounterThree.vue';
+import CounterThree from './components/CounterThree.vue';
 export default {
 	name: 'app',
 	data () {
@@ -24,7 +24,7 @@ export default {
 	components: {
 		CompCounter,
 		CounterTwo,
-		// CounterThree
+		CounterThree
 	},
 	methods: {
 		
