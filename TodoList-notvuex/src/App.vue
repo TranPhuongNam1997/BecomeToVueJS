@@ -31,9 +31,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
-
 import ComponentForm from './Component/ComponentForm.vue';
 import DanhSachBang from './Component/DanhSachBang.vue';
 import TienIch from './Component/TienIch.vue';
@@ -58,7 +55,7 @@ export default {
     return {
         danhsachTask : danhsachTask,
         //   info: null
-        hienthiform: false,
+        hienthiform: false, 
         textdulieusearch: '',
         sapxeptheo: 'name',
         kieusapxep: 'asc',
@@ -67,9 +64,6 @@ export default {
      };
   },
   computed:{
-      ...mapState([
-          'count'
-      ]),
       danhsachtashtimkiem(){
           const {textdulieusearch} = this;
           //cach 1 

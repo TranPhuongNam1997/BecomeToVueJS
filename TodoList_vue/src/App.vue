@@ -41,6 +41,9 @@ App
 
 */
 // Lưu dũ liệu -> Không cần -> Mock Data, Fake Data
+
+import { mapState } from 'vuex'
+
 import TodoListTable from './components/TodoListTable';
 import CompTitle from './components/CompTitle';
 import CompControl from './components/CompControl';
@@ -73,6 +76,9 @@ export default {
 		}
 	},
 	computed: {
+		...mapState([
+			'count'
+		]),
 		listTaskSearch() {
 			const { strSearch } = this;
 			
@@ -86,7 +92,7 @@ export default {
 			// 		newItems.push(item);
 				
 			// });
-			return newItems;
+			return newItems; 
 		},
 		listTaskSort() {
 			var listTask = [...this.listTaskSearch];

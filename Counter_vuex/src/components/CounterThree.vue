@@ -21,14 +21,33 @@ export default {
         ])
     },
     methods: {
+        ...mapActions({
+            'ABC': 'incrementAction',
+            'DEF': 'decrementAction'
+        }),
         plus(){
             console.log('plus increment');
-            this.$store.commit('increment',2)
+            // this.$store.commit('increment',2)
+
+            let obj = {
+                number: 10
+            }
+            // this.$store.dispatch('incrementAction',obj);
+            // ~
+            // this.incrementAction(obj);
+            this.ABC(obj);
         },
         minus(){
             console.log('minus decrement');
+            let obj = {
+                number: 10
+            }
+            // this.$store.commit('decrement',2)
+            //this.$store.dispatch('decrementAction',obj);
+            // ~
+            // this.decrementAction(obj);
+            this.DEF(obj);
 
-            this.$store.commit('decrement',2)
 
         },
     }
