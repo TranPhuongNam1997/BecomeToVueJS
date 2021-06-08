@@ -30,6 +30,11 @@
 	</div>
 </template>
 <script>
+
+import { mapState , mapActions } from 'vuex'
+import task from '../DuLieuAo/task';
+
+
 import ItemDanhSachBang from './ItemDanhSachBang.vue';
 export default {
   	components: { ItemDanhSachBang },
@@ -37,14 +42,26 @@ export default {
 	data() {
 		return {}; 
 	},
-	props:{
-		danhsachTask:{
-			type:Array,
-			default: [],
-		},
-		
+	
+	computed:{
+		...mapState([
+			'danhsachTask'
+		])
 	},
+	created(){
+		//nếu mà null thì gán giá trị mặc định cho nó bằng rỗngcho
+		let tasks = localStorage.getItem('tasks') || '[]';
+		// console.log("created danh sach bang ",JSON.parse(tasks));
+		this.changeTask(JSON.parse(tasks));
+	},
+	watch:{
+      danhsachTask: function(newtask){
+        var taskStrimg= JSON.stringify(newtask);
+        localStorage.setItem('tasks',taskStrimg);
+      }
+  	},
 	methods:{
+		...mapActions([ 'changeTask' ]),
 		deleteItem(data){
 			this.$emit('deleteItem', data)
 		},

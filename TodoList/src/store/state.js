@@ -1,3 +1,7 @@
+
+import task from '../DuLieuAo/task'
+
 export default{
-    count: 0
+    danhsachTask: task,
+    hienthiform: false
 }

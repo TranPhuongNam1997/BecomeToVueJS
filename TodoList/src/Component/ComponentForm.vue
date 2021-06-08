@@ -2,10 +2,7 @@
     <div class="col-12 col-lg-6">
           <!-- ADD : START -->
 
-          <form-them-moi
-               v-on:clickthemtask="clickthemtask"
-               v-bind:hienthiform="hienthiform"
-          />
+          <form-them-moi />
           <!-- ADD : END -->
 
           <form
@@ -39,6 +36,8 @@
         </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 import FormThemMoi from './FormThemMoi.vue'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -52,22 +51,12 @@ export default {
           }
      },
      props:{
-          hienthiform:{
-              type:  Boolean,
-              default: false
-          },
           taskSelected:{
 			type: Object,
 			default: null
 		}
      },
-    //chạy khi bất cứ khi nào có sự thay đổi
-     // beforeUpdate(){
-
-     // },
-
-     // //lắng nghe sự thay đổi dữ liệu của riêng từng phần tử chứ không phải toàn bộ component
-     // bộ theo dõi
+     computed: mapState(['hienthiform']),
      watch:{
           taskSelected: function(newdata,olddata){
                if(newdata !== null){
@@ -77,9 +66,9 @@ export default {
           }
      },
      methods:{
-          clickthemtask(){
-               this.$emit('togglethemtask');
-          },
+          // clickthemtask(){
+          //      this.$emit('togglethemtask');
+          // },
           huybothemtask(){
                this.$emit('togglethemtask');
                this.resetdata();

@@ -12,14 +12,12 @@
                     />
                     <component-form
                         v-on:submitForm="submitForm"
-                        v-bind:hienthiform="hienthiform"
-                        v-on:togglethemtask="togglethemtask"
                         v-bind:taskSelected="taskSelected"
                         v-on:updateform="updateform"
                     />
                </div>
                <danh-sach-bang
-                    v-bind:danhsachTask="danhsachTaskSort"
+                    
                     v-on:deleteItem="deleteItem"
                     v-on:btnEdit="btnEdit"
                />
@@ -56,7 +54,7 @@ export default {
   },
   data() {
     return {
-        danhsachTask : danhsachTask,
+        // danhsachTask : danhsachTask,
         //   info: null
         hienthiform: false,
         textdulieusearch: '',
@@ -67,9 +65,7 @@ export default {
      };
   },
   computed:{
-      ...mapState([
-          'count'
-      ]),
+      
       danhsachtashtimkiem(){
           const {textdulieusearch} = this;
           //cach 1 
@@ -85,7 +81,7 @@ export default {
 
         //   var itemMoi = this.danhsachTask.filter(item => {
         //       return item.tenTask.toLowerCase().includes(textdulieusearch.toLowerCase())
-        //   })
+        //   })  
 
 
 
@@ -104,24 +100,6 @@ export default {
           return danhsachTask;
       }
   },
-  watch:{
-      danhsachTask: function(newtask){
-        var taskStrimg= JSON.stringify(newtask);
-        localStorage.setItem('tasks',taskStrimg);
-      }
-  },
-  created(){
-      // lay danhsachTask trong localStorage
-      let tasks = localStorage.getItem('tasks');
-      if(tasks !== null){
-          this.danhsachTask = JSON.parse(tasks);
-      }
-      else{
-          this.danhsachTask = [];
-      }
-
-  },
-  
   
   methods:{
         updateform(data){
@@ -158,14 +136,6 @@ export default {
 
             // cach 2 dung filter
             // this.danhsachTask = this.danhsachTask.filter(item => item.id !== data.id);
-        },
-        togglethemtask(){
-            console.log('da bam toggle form')
-          if(this.hienthiform == true) this.taskSelected = null
-          
-          //để dùng toggle thì mình dùng phủ định lại thôi :D
-          this.hienthiform = !this.hienthiform;
-
         },
 
         VlInput(e){

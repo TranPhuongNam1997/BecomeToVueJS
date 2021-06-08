@@ -3,7 +3,7 @@
           <button 
                type="button" 
                class="btn btn-info btn-block"
-               v-on:click="$emit('clickthemtask')"
+               v-on:click="'clickthemtask'"
                v-if="!hienthiform"
                >
                Thêm Task
@@ -19,6 +19,8 @@
     </div>
 </template>
 <script>
+import { mapState,mapActions } from 'vuex'
+
 export default {
     name:'formthemmoi',
     data(){
@@ -26,10 +28,12 @@ export default {
           
         }
     },
-    props:{
-         hienthiform:{
-              type:  Boolean,
-              default: false
+    computed: mapState(['hienthiform']),
+    methods:{
+         ...mapActions(['togglethemtask']),
+         clickthemtask(){
+              console.log('clickthemtask formthemoi.vue run')
+              this.togglethemtask;
          }
     }
 }
