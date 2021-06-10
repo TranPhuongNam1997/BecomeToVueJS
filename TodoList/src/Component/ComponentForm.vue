@@ -60,7 +60,7 @@ export default {
           }
      },
      methods:{
-          ...mapActions(['togglethemtask','handleAdd']),
+          ...mapActions(['togglethemtask','handleAdd','handleEditForm']),
 
           huybothemtask(){
                this.togglethemtask();
@@ -92,7 +92,10 @@ export default {
                    tenTask: this.tentask,
                    level: parseInt(this.mucdo)
                }
-               this.$emit('updateform',objEdit);
+
+               // this.$emit('updateform',objEdit);
+               this.handleEditForm(objEdit)
+               this.resetdata();
          }
     }
 }

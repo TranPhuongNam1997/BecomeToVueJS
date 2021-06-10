@@ -53,12 +53,7 @@ export default {
 		// console.log("created danh sach bang ",JSON.parse(tasks));
 		this.changeTask(JSON.parse(tasks));
 	},
-	// watch:{
-    //   danhsachTask: function(newtask){
-    //     var taskStrimg= JSON.stringify(newtask);
-    //     localStorage.setItem('tasks',taskStrimg);
-    //   }
-  	// },
+	
 	methods:{
 		...mapActions([ 'changeTask' ]),
 		

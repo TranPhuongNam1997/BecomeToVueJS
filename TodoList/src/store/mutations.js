@@ -4,7 +4,7 @@ export default{
         state.danhsachTask = newTasks;
     },
     TOGGLE_THEMTASK(state){
-        // if(this.hienthiform == true) this.taskSelected = null
+        if(state.hienthiform == true) state.taskSelected = null
         // console.log('mutations TOGGLE_THEMTASK run')
         state.hienthiform = !state.hienthiform;
     },
@@ -14,7 +14,7 @@ export default{
         state.textdulieusearch = textdulieusearch;
     },
     HANDLE_SAPXEP(state,{sapxeptheo,kieusapxep}){
-        console.log('mutations handleSapXep',sapxeptheo,kieusapxep);
+        console.log('mutations handleSapXep',sapxeptheo,kieusapxep);    
 
         state.sapxeptheo = sapxeptheo;
         state.kieusapxep = kieusapxep;

@@ -28,7 +28,6 @@ export default{
     handleEdit({commit},itemedit){
         commit('HANDLE_EDIT',itemedit);
     },
-
     handleEditForm({commit,state},taskedit){
         let index = state.danhsachTask.findIndex(item => item.id === taskedit.id);
 
