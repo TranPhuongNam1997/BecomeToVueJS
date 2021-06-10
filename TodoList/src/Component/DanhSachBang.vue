@@ -16,7 +16,6 @@
 					v-for="(item,index) in danhsachTask" v-bind:key="item.id"
 					v-bind:item="item"
 					v-bind:index="index + 1"
-					v-on:deleteItem="deleteItem"
 					v-on:btnEdit="btnEdit"
 				/>
 			</tbody>
@@ -31,7 +30,7 @@
 </template>
 <script>
 
-import { mapState , mapActions } from 'vuex'
+import { mapState , mapActions , mapGetters} from 'vuex'
 import task from '../DuLieuAo/task';
 
 
@@ -44,9 +43,9 @@ export default {
 	},
 	
 	computed:{
-		...mapState([
-			'danhsachTask'
-		])
+		...mapGetters({
+			'danhsachTask' : 'danhsachtashtimkiemsapxep'
+		})
 	},
 	created(){
 		//nếu mà null thì gán giá trị mặc định cho nó bằng rỗngcho
@@ -54,17 +53,15 @@ export default {
 		// console.log("created danh sach bang ",JSON.parse(tasks));
 		this.changeTask(JSON.parse(tasks));
 	},
-	watch:{
-      danhsachTask: function(newtask){
-        var taskStrimg= JSON.stringify(newtask);
-        localStorage.setItem('tasks',taskStrimg);
-      }
-  	},
+	// watch:{
+    //   danhsachTask: function(newtask){
+    //     var taskStrimg= JSON.stringify(newtask);
+    //     localStorage.setItem('tasks',taskStrimg);
+    //   }
+  	// },
 	methods:{
 		...mapActions([ 'changeTask' ]),
-		deleteItem(data){
-			this.$emit('deleteItem', data)
-		},
+		
 		btnEdit(data){
 			this.$emit('btnEdit',data);
 		}

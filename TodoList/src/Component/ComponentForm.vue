@@ -36,7 +36,7 @@
         </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState,mapActions } from 'vuex'
 
 import FormThemMoi from './FormThemMoi.vue'
 import { v4 as uuidv4 } from 'uuid';
@@ -50,13 +50,7 @@ export default {
                mucdo: 0,
           }
      },
-     props:{
-          taskSelected:{
-			type: Object,
-			default: null
-		}
-     },
-     computed: mapState(['hienthiform']),
+     computed: mapState(['hienthiform','taskSelected']),
      watch:{
           taskSelected: function(newdata,olddata){
                if(newdata !== null){
@@ -66,22 +60,27 @@ export default {
           }
      },
      methods:{
-          // clickthemtask(){
-          //      this.$emit('togglethemtask');
-          // },
+          ...mapActions(['togglethemtask','handleAdd']),
+
           huybothemtask(){
-               this.$emit('togglethemtask');
+               this.togglethemtask();
                this.resetdata();
           },
           submitForm(){
-               let objtask = {
-                   id: uuidv4(),
-                   tenTask : this.tentask,
-                   level: parseInt(this.mucdo)
-               }
+               if(this.tentask.trim()){
+                    let itemnewadd = {
+                         id: uuidv4(),
+                         tenTask : this.tentask.trim(),
+                         level: parseInt(this.mucdo)
+                    }
+                    this.handleAdd(itemnewadd)
 
-               this.$emit('submitForm',objtask);
-               this.huybothemtask();
+                    this.huybothemtask();
+               }
+               else{
+                    alert('Vui lòng nhập tên người dùng')
+               }
+               
           },
           resetdata(){
                this.tentask = '';

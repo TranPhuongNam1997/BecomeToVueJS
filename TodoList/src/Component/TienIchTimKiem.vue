@@ -7,11 +7,11 @@
             placeholder="Nhập từ khóa..."
 
             v-bind:value="textdulieusearch"
-            v-on:input="$emit('VlInput',$event.target.value)"
+            v-on:input="VlInput"
             />
             <span class="input-group-append">
                 <button class="btn btn-info" type="button"
-                    v-on:click="$emit('VlInput','')"
+                    v-on:click="cleartextsearch"
                 
                 >Xóa!</button>
             </span>
@@ -19,6 +19,8 @@
     </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
     name: 'tienichtimkiem',
     data(){
@@ -26,12 +28,25 @@ export default {
 
         }
     },
-    props:{
-        textdulieusearch:{
-            type: String,
-            default: ''
+    computed: mapState(['textdulieusearch']),
+    methods:{
+        cleartextsearch(){
+            this.$store.dispatch('handleSearch','')
+        },
+        VlInput(e){
+            this.$store.dispatch('handleSearch',e.target.value)
+            console.log('du lieu nhap o input',e.target.value)
+            // this.$emit('VlInput',$event.target.value)
         }
     }
+    // props:{
+    //     textdulieusearch:{
+    //         type: String,
+    //         default: ''
+    //     }
+    // }
+
+
 }
 </script>
 <style scoped>

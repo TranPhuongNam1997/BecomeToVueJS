@@ -19,6 +19,8 @@
     </tr>
 </template>
 <script>
+import { mapState , mapActions , mapGetters} from 'vuex'
+
 import mapmucdo from '../DuLieuAo/mucdo'
 export default {
     name: 'itemdanhsachbang',
@@ -47,13 +49,18 @@ export default {
         
 	},
     methods:{
+        ...mapActions({
+            'actionhandleDelete': 'handleDelete',
+            'handleEdit':'handleEdit'
+        }),
         deleteItem(){
             if(confirm('Bạn có muốn xóa TASK ' + this.item.name) +' không'){
-                this.$emit('deleteItem',this.item)
+                this.actionhandleDelete(this.item)
             }
         },
         btnEdit(){
-            this.$emit('btnEdit',this.item);
+            // this.$emit('btnEdit',this.item);
+            this.handleEdit(this.item);
         },
     }
 }

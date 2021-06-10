@@ -13,6 +13,8 @@
     </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
     name: 'tienichsapxep',
     data(){
@@ -20,23 +22,30 @@ export default {
 
         }
     },
+    computed:{
+      ...mapState(['sapxeptheo','kieusapxep'])  
+    },
     methods:{
-        hamsapxep(data1,data2){
-            let data = {data1,data2};
-            this.$emit('hamsapxep',data);
+        ...mapActions(['handleSapXep']),
+        hamsapxep(sapxeptheo,kieusapxep){
+            let data = {sapxeptheo,kieusapxep};
+            this.handleSapXep(data);
+            console.log('handleSapXep nhan duoc comp',data)
+            // this.$emit('hamsapxep',data);
+
         }
     },
-    props:{
-        sapxeptheo:{
-            type: String,
-            default: 'name'
-        },
+    // props:{
+    //     sapxeptheo:{
+    //         type: String,
+    //         default: 'name'
+    //     },
 
-        kieusapxep:{
-            type: String,
-            default: 'asc'
-        },
-    }
+    //     kieusapxep:{
+    //         type: String,
+    //         default: 'asc'
+    //     },
+    // }
 }
 </script>
 <style scoped>

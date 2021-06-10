@@ -2,16 +2,9 @@
     <div class="col-12 col-lg-6">
         <div class="row">
             
-            <tien-ich-sap-xep
-                v-bind:sapxeptheo="sapxeptheo"
-                v-bind:kieusapxep="kieusapxep"
-                v-on:hamsapxep="hamsapxep"
-            />
+            <tien-ich-sap-xep />
 
-            <tien-ich-tim-kiem
-                v-bind:textdulieusearch="textdulieusearch"
-                v-on:VlInput="VlInput"
-            />
+            <tien-ich-tim-kiem />
 
         </div>
     </div>
@@ -29,30 +22,19 @@ export default {
     },
     methods:{
         
-        VlInput(even){
-            this.$emit('VlInput',even);
-        },
-        hamsapxep(data){
-            this.$emit('hamsapxep',data);
-        }
-        
     },
-    props:{
-        textdulieusearch:{
-            type: String,
-            default: ''
-        },
-        sapxeptheo:{
-            type: String,
-            default: 'name'
-        },
+    // props:{
+    //     sapxeptheo:{
+    //         type: String,
+    //         default: 'name'
+    //     },
 
-        kieusapxep:{
-            type: String,
-            default: 'asc'
-        },
+    //     kieusapxep:{
+    //         type: String,
+    //         default: 'asc'
+    //     },
 
-    }
+    // }
 }
 </script>
 <style scoped>
