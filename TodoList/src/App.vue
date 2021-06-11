@@ -21,7 +21,7 @@ import ComponentForm from './Component/ComponentForm.vue';
 import DanhSachBang from './Component/DanhSachBang.vue';
 import TienIch from './Component/TienIch.vue';
 import TieuDeTodo from './Component/TieuDeTodo.vue';
-import { mapState , mapActions , mapGetters} from 'vuex'
+import { mapState } from 'vuex'
 
 
 import Vue from 'vue'
@@ -43,15 +43,17 @@ export default {
      };
   },
   methods:{
-    ...mapState(['danhsachTask'])
+
   },
   computed:{
 
-    watch:{
-      danhsachTask: function(newtask){
-        localStorage.setItem('tasks',JSON.stringify(newtask));
-      }
-  	},
+    ...mapState(['danhsachTask'])
+    
+  },
+  watch:{
+    danhsachTask: function(newtask){
+      localStorage.setItem('tasks',JSON.stringify(newtask));
+    }
   },
 
 
