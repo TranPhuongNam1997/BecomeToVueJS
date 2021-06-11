@@ -1,0 +1,137 @@
+<template>
+     <div id="app">
+        <div class="container-x mt-4">
+            <h1 class="mb-4">Vue2 - Shopping Cart <span class="d-inline-block">(Vue + Vuex)</span></h1>
+            <div class="row">
+                <div class="col-xl-5 mb-5">
+                    <div class="head-product">Danh sách sản phẩm</div>
+                    <div class="box-pro">
+                        <div class="item-pro row">
+                            <div class="col-md-3">
+                                <img src="https://cf.shopee.vn/file/851ee435d8dda264e43a30e6c9d957bf_tn" class="w-100" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="name-product">Dây Chuyền Nam Titan Cá Tính Siêu Ngầu Nhiều Lựa Chọn - Bim's House</div>
+                                <div class="descript">Bim's house xin trân trọng cảm ơn quý khách. Chúc quý khách nhiều sức khỏe và thành công trong cuộc sống.</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-flex h-100 flex-column justify-content-between">
+                                    <input type="number">
+                                    <button class="btn btn-buy">12 USD</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-pro row">
+                            <div class="col-md-3">
+                                <img src="https://cf.shopee.vn/file/e6e3e02f0b9a3dfaf4d863dc54a784cb_tn" class="w-100" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="name-product">GƯƠNG TRANG ĐIỂM TAI MÈO DỄ THƯƠNG ĐỂ BÀN</div>
+                                <div class="descript">Gương tai gấu dễ thương dễ thương, thỏa mãn trái tim cô gái của bạn, gương HD, xoay 360 °, có thể lưu trữ đồ trang sức, khay ổn định.</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-flex h-100 flex-column justify-content-between">
+                                    <input type="number">
+                                    <button class="btn btn-buy">12 USD</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-pro row">
+                            <div class="col-md-3">
+                                <img src="https://cf.shopee.vn/file/3845f0bf5293fbd6680b36de4d54016e" class="w-100" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="name-product">ĐỒ CHƠI LẮP RÁP LEGO</div>
+                                <div class="descript">Trẻ em Thông Minh qua cách giáo dục của bố mẹ ! Theo nghiên cứu 28% trẻ em thông minh hơn khi được tự do vui chơi sáng tạo.</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-flex h-100 flex-column justify-content-between">
+                                    <input type="number">
+                                    <button class="btn btn-buy">12 USD</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-pro row">
+                            <div class="col-md-3">
+                                <img src="https://cf.shopee.vn/file/119427b58f355aaf34915f4979447916_tn" class="w-100" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="name-product">Túi đeo chéo unisex phản quang Arrowlight reflective mini bag</div>
+                                <div class="descript">Mini bag 2 lớp chất liệu cao cấp dày dặn chắc chắc, in logo Arrowlight trên nền túi với chất liệu phản quang bạc.</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-flex h-100 flex-column justify-content-between">
+                                    <input type="number">
+                                    <button class="btn btn-buy">12 USD</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="col-xl-7">
+                    <div class="table-cart">
+                        <table class="table mb-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">STT</th>
+                                    <th scope="col" class="w-200">Tên sản phẩm</th>
+                                    <th scope="col">Đơn giá</th>
+                                    <th scope="col" class="text-center">Số lượng</th>
+                                    <th scope="col">Thành tiền</th>
+                                    <th scope="col" class="text-center">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row" class="text-center fw-bold">1</td>
+                                    <td>Lorem</td>
+                                    <td>12 USD</td>
+                                    <td class="text-center"><input class="w-100px" type="number" readonly="readonly"></td>
+                                    <td>24 USD</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-primary">Cập nhật</button>
+                                        <button class="btn btn-danger">Xóa</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row" class="text-center fw-bold">2</td>
+                                    <td>Lorem</td>
+                                    <td>12 USD</td>
+                                    <td class="text-center"><input class="w-100px" type="number" readonly="readonly"></td>
+                                    <td>24 USD</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-primary">Cập nhật</button>
+                                        <button class="btn btn-danger">Xóa</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">Có <span class="fw-bold">5</span>  sản phẩm trong giỏ hàng</td>
+                                </tr>
+                                
+                            
+                            </tbody>
+                        </table>
+                    </div>	
+                </div>
+            </div>
+        </div>
+     </div>
+</template>
+
+<script>
+export default {
+  name: 'app',
+  data () {
+    return {
+        
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

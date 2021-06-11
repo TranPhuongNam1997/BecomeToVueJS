@@ -24,7 +24,7 @@
 					<td class="text-center" colspan=4 >Không có dữ liệu hiển thị</td>
 				</tr>
 				
-			</tbody>
+			</tbody>	
 		</table>
 	</div>
 </template>

@@ -31,6 +31,7 @@ import VueAxios from 'vue-axios'
 
 export default {
   name: "app",
+  
   components:{
     DanhSachBang,
     TienIch,
