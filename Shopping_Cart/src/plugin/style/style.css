@@ -58,6 +58,11 @@
 td{
 	vertical-align: middle!important;
 }
-tbody{
+.table-cart{
 	border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.table tr:last-child td{
+	border-bottom: none;
 }
