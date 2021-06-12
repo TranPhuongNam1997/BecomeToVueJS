@@ -66,3 +66,14 @@ td{
 .table tr:last-child td{
 	border-bottom: none;
 }
+h1 span{
+	color: #a5a5a5;
+	font-size: 21px;
+}
+
+.notify{
+	padding: 10px 20px;
+    background: #D4EDDA;
+    color: #155724;
+	border-radius: 5px;
+}
