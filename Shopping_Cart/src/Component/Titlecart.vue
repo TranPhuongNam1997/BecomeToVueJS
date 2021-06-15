@@ -4,7 +4,7 @@
 </template>
 <script>
 export default {
-    name: 'title',
+    name: 'titlecart',
     data() {
         return{
 

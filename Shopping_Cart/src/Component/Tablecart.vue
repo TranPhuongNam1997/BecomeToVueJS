@@ -6,7 +6,6 @@
                 <tbody>
                     <tablebody />
                     <tablebody />
-
                     <tablefoot />
                 </tbody>
             </table>
@@ -25,7 +24,7 @@ export default {
     name:'tablecart',
     data() {
         return{
-
+ 
         }
     },
 }

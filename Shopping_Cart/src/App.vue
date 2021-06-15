@@ -1,8 +1,8 @@
 <template>
      <div id="app">
         <div class="container-x mt-4">
-
-            <title />
+            <titlecart/>
+            
             <div class="row">
                 <listproduct />
                 
@@ -15,9 +15,9 @@
 <script>
 import Listproduct from './Component/Listproduct.vue'
 import Tablecart from './Component/Tablecart.vue'
-import Title from './Component/title.vue'
+import Titlecart from './Component/Titlecart.vue'
 export default {
-  components: { Title, Listproduct, Tablecart },
+  components: { Titlecart, Listproduct, Tablecart },
   name: 'app',
   
   data() {

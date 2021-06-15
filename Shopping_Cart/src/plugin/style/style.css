@@ -30,6 +30,10 @@
 	color: #fff;
 	font-weight: 500;
 }
+.btn-buy:hover{
+	color: #fff;
+	background: #f3461f;
+}
 .name-product{
 	font-weight: 700;
 	margin-bottom: 10px;
