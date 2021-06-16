@@ -1,5 +1,3 @@
-
-
 export default{
-    'soluong' : 2
+    dsgiohang: [],
 }
