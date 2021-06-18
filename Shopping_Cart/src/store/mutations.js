@@ -1,5 +1,5 @@
 export default{
-    increment: state =>{
-        console.log('Da vao duoc mutation cua store',state);
+    SET_LOADING: (state,loading) =>{
+        state.isloading = loading;
     }
 }

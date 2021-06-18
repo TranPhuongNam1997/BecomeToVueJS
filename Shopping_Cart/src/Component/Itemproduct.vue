@@ -56,20 +56,16 @@ export default {
     btnmua() {
       let check = validatesoluong(this.soluongmua);
       if (check == true) {
-        // console.log('Số lượng hợp lệ',sl);r
 
         let objmuahang = {
           sanpham: this.sanpham,
           soluong: parseInt(this.soluongmua),
         };
-
+        this.soluongmua = 1;
         this.themgiohang(objmuahang);
-
         this.$notify(themgiohangthanhcong);
-
-        // console.log('btnmua',objmuahang)
       } else {
-        console.log("Số lượng mua không hợp lệ", this.soluongmua);
+        // console.log("Số lượng mua không hợp lệ", this.soluongmua);
         this.$notify(themgiohangthatbai);
       }
     },
