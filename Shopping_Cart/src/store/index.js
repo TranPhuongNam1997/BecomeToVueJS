@@ -11,8 +11,24 @@ import ModuleProducts from './Products'
 
 Vue.use(Vuex)
 
+// const localstorage = store =>{
+//     store.subcribe((mutations,state) =>{
+//         // mỗi khi dữ liệu thay đổi thì nó sẽ lưu vào đây
+//         console.log('subcribe',state);
+//     })
+// }
+
+const localStorage = store => {
+    store.subscribe((mutation, state) => {
+        // mỗi khi dữ liệu thay đổi thì nó sẽ lưu vào đây
+
+        window.localStorage.setItem('giohang', JSON.stringify(state.Cart));
+        console.log('subcribe',state.Cart);
+    })
+}
+
 const store = new Vuex.Store({
-    strict: true,
+    strict: process.env.NODE_ENV !== 'production',
 
     state,
     getters,
@@ -21,7 +37,8 @@ const store = new Vuex.Store({
     modules:{
         Cart: ModuleCart,
         Products: ModuleProducts
-    }
+    },
+    plugins: [localStorage]
 })
 
 store.commit('Products/increment')
