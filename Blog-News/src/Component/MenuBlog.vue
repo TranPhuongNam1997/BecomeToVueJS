@@ -9,6 +9,8 @@
 				<b-navbar-nav>
 					<router-link to="/" tag="b-nav-item" exactActiveClass="active">Trang chủ</router-link>
 					<router-link to="/aboutus" tag="b-nav-item" exactActiveClass="active">AboutUs</router-link>
+					<router-link to="/user" tag="b-nav-item" exactActiveClass="active">User</router-link>
+					<router-link to="/login" tag="b-nav-item" exactActiveClass="active">Login</router-link>
 				</b-navbar-nav>
 
 				<!-- Right aligned nav items -->
@@ -47,7 +49,7 @@
 
 <script>
 export default {
-	name: " menublog",
+	name: "menu-blog",
 };
 </script>
 
