@@ -7,6 +7,8 @@ import About from './Pages/About'
 import Contact from './Pages/Contact'
 import PostDetail from './Pages/PostDetail'
 import NotFound from './Pages/NotFound'
+import Login from './Pages/Login'
+import store from './Store'
 
 Vue.use(VueRouter)
 
@@ -28,13 +30,29 @@ const routes = [
 	{ 
 		path: '/contact',
 		name: 'contact',
-		component: Contact 
+		component: Contact
 	},
 	{ 
-		path: '/post-detail',
+		path: '/post-detail/:title.:id',
 		name: 'post-detail',
-		component: PostDetail 
+		component: PostDetail ,
+		beforeEnter: (to, from, next) => {
+			if(store.state.isLogin == true){
+				next();
+			}
+			else{
+				//query là để thể hiện bị redirect từ đâu
+				next({path: '/login', query: {redirect: 'post-detail'}})
+			}
+		}
 	},
+	
+	{ 
+		path: '/login',
+		name: 'login',
+		component: Login 
+	},
+
 	{
 		path: '*',
 		component: NotFound

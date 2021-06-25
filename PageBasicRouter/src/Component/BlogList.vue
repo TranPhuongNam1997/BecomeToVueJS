@@ -14,7 +14,6 @@
                 <blog-list-item
                     v-for="item in listblock"
                     :key="item.id"
-                    :index="index"
                     :listblockItem="item"
                 />
             </div>

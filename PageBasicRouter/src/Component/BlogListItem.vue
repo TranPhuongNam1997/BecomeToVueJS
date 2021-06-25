@@ -3,7 +3,20 @@
         <div class="card h-100 shadow border-0">
             <img class="card-img-top" :src="listblockItem.imglink" alt="..." />
             <div class="card-body p-4">
-                <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">{{listblockItem.postname}}</h5></a>
+                <router-link  class="text-decoration-none link-dark stretched-link" 
+                    :to="{ 
+                        name: 'post-detail', 
+                        params: { 
+                            title: formattitle,
+                            id: listblockItem.id
+                        }
+                    }"
+                >
+
+                    <h5 class="card-title mb-3">{{listblockItem.postname}}</h5>
+
+                </router-link>
+
                 <p class="card-text mb-0">{{listblockItem.postsub}}</p>
             </div>
             <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
@@ -28,6 +41,13 @@ export default {
         listblockItem:{
             type: Object,
             default: {}
+        }
+    },
+    computed:{
+        formattitle(){
+            // console.log('đây là tieu de',this.listblockItem.postname.split(" ").join("-").toLowerCase());
+
+            return this.listblockItem.postname.split(" ").join("-").toLowerCase().replace(".","");
         }
     }
 }

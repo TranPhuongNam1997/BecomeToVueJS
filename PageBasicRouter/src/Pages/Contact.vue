@@ -89,7 +89,7 @@
 <script>
 import HeaderPage from '../Component/HeaderPage.vue'
 export default {
-  components: { HeaderPage },
+    components: { HeaderPage },
     name: 'contact-us'
 }
 </script>

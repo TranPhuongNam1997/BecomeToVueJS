@@ -19,10 +19,6 @@
                         :src="linkimg" 
                         alt="..." 
                     />
-                    <!-- <img class="w-100 img-fluid rounded-3 my-5" 
-                        src="../assets/images/bannerhome.jfif" 
-                        alt="..." 
-                    /> -->
                 </div>
             </div>
         </div>

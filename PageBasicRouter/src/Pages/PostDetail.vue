@@ -2,14 +2,15 @@
     <div>
         <header-page
             linkimg="https://img1.kienthucvui.vn/uploads/2021/01/13/anh-trai-dep-han-quoc_023544769.jpg"
-            title="Welcome to Blog Post!"
-            subbanner="Science is an enterprise that should be cherished as an activity of the free human mind. Because it"
+            :title="dataPost[0].postname"
+            :subbanner="dataPost[0].postsub"
             classname="hide-class-home"
         >
-            <div>author: </div>
+            <div style="font-size: 20px;color: #fff;font-weight: bold">{{dataPost[0].username}}</div>
         </header-page>
 
         <section class="py-5">
+            
             <div class="container px-5 my-5">
                 <div class="row gx-5">
                     <div class="col-lg-3">
@@ -97,11 +98,25 @@
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
+
 import HeaderPage from '../Component/HeaderPage.vue'
 export default {
-  components: { HeaderPage },
-    name: 'post-detail'
+    components: { HeaderPage },
+    name: 'post-detail',
+    computed:{
+        ...mapState(['listblock']),
+
+        dataPost(){
+            console.log(this.listblock.filter(item => (item.id === this.$route.params.id)));
+            return this.listblock.filter(item => (item.id === this.$route.params.id))
+        }
+
+    }
+
 }
+
 </script>
 
 <style scoped>

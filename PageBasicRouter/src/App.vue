@@ -3,6 +3,7 @@
 		<navigation />
 		<router-view></router-view>
 		<footer />
+		<notifications group="foo" position="bottom right" />
 	</div>
 </template>
 
