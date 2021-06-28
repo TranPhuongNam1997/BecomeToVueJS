@@ -12,16 +12,27 @@
                         <form id="contactForm" data-sb-form-api-token="API_TOKEN" v-if="!isLogin">
                             <!-- ACC input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" v-model="email" type="text" required placeholder="enter your email" />
+                                <input class="form-control" 
+                                    v-model="email" 
+                                    type="text" required 
+                                    placeholder="enter your email"
+                                    v-on:keyup="entertologin"
+                                 />
                                 <label for="name">Account</label>
                             </div>
                             <!-- PASS address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" v-model="password" type="password" required placeholder="emter your passwỏd"  />
+                                <input class="form-control" 
+                                    v-model="password" 
+                                    type="password" 
+                                    required 
+                                    placeholder="emter your password"  
+                                    v-on:keyup="entertologin"
+                                />
                                 <label for="email">Password</label>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-lg" type="button" @click="checklogin">Login</button>
+                                <button class="btn btn-primary btn-lg" type="button" @click="checklogin" id="btn-login">Login</button>
                                 </div>
                         </form>
                         <template v-else> 
@@ -50,7 +61,12 @@ export default {
     },
     methods:{
         ...mapActions(['atcchecklogin','atclogout']),
+        
+        logout(e){
+            this.atclogout()
+        },
         checklogin(){
+            
             let data = {
                 email: this.email,
                 password: this.password
@@ -75,9 +91,18 @@ export default {
                 }
             });
         },
-        logout(e){
-            this.atclogout()
-        }
+        //enter to login
+
+        entertologin: function(e) {
+
+            if (e.keyCode === 13) {
+                this.checklogin();
+            } 
+            else if (e.keyCode === 50) {
+
+            }      
+        },
+        
     }
 }
 </script>

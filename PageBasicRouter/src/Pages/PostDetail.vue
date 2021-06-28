@@ -1,10 +1,11 @@
 <template>
     <div>
         <header-page
-            linkimg="https://img1.kienthucvui.vn/uploads/2021/01/13/anh-trai-dep-han-quoc_023544769.jpg"
             :title="dataPost[0].postname"
             :subbanner="dataPost[0].postsub"
+            :linkimg="dataPost[0].imglink"
             classname="hide-class-home"
+
         >
             <div style="font-size: 20px;color: #fff;font-weight: bold">{{dataPost[0].username}}</div>
         </header-page>
@@ -116,6 +117,7 @@ export default {
     }
 
 }
+
 
 </script>
 

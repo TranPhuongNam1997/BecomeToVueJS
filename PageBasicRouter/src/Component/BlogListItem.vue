@@ -1,7 +1,18 @@
 <template>
     <div class="col-lg-4 mb-5">
         <div class="card h-100 shadow border-0">
-            <img class="card-img-top" :src="listblockItem.imglink" alt="..." />
+            <router-link
+                :to="{ 
+                    name: 'post-detail', 
+                    params: { 
+                        title: formattitle,
+                        id: listblockItem.id
+                    }
+                }"
+            >
+                <img class="card-img-top" :src="listblockItem.imglink" alt="..." />
+
+            </router-link>
             <div class="card-body p-4">
                 <router-link  class="text-decoration-none link-dark stretched-link" 
                     :to="{ 
