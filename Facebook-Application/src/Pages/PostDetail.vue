@@ -220,8 +220,8 @@
 
 export default {
     name:'post-detail-page',
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }

@@ -27,8 +27,8 @@
 <script>
 export default {
     name:'change-password-page',
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }

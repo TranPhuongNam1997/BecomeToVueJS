@@ -22,7 +22,7 @@
                             </div>
                         </div>
 
-                        <button class="btn-login">Đăng nhập</button>
+                        <button class="btn-login ripple">Đăng nhập</button>
                     </div>
                 </form>
                 <div class="line-login"></div>
@@ -42,8 +42,8 @@ import Register from '../Components/Register.vue'
 export default {
   components: { Register },
     name:'login-page',
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }

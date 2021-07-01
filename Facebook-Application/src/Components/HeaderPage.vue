@@ -84,14 +84,43 @@
     </header>
 </template>
 
+
 <script>
+// import $ from "jquery";
 export default {
     name: 'header-comp',
-    data:{
-        return:{
+    data(){
+        return{
 
         }
+    },
+    mounted(){
+        // $(".btn-category").click(function (event) {
+        //     console.log('a')
+        //     $('.navigation').slideToggle(300,'swing');
+        //     $(this).toggleClass('active');
+        //     event.stopPropagation();
+        // });
+        
+        // const $menu = $('.header-home');
+        // $(document).mouseup(e => {
+        //     if (!$menu.is(e.target)
+        //         && $menu.has(e.target).length === 0)
+        //     {
+        //         $('.btn-category').removeClass('active');
+        //         $('.navigation').slideUp(300,'swing');
+        //     }
+        // });
+    },
+    methods:{
+        // onclickCategory(event){
+        //     console.log(event);
+        //     $('.navigation').slideToggle(300,'swing');
+        //     $(this).toggleClass('active');
+        //      event.stopPropagation();
+        // }
     }
+    
 }
 </script>
 

@@ -42,8 +42,8 @@
 
 export default {
     name:'register-popup',
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }

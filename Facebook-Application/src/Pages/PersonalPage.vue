@@ -255,8 +255,8 @@
 
 export default {
     name:'personal-page',
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }

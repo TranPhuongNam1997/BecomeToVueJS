@@ -13,7 +13,7 @@
                                 <textarea placeholder="Bạn đang nghĩ gì?"></textarea>
                             </div>
                             <a class="img-viewupload" href="#https://www.iloveimg.com/vi/cong-cu-tao-meme">
-                                <img src="img/ShowImage.jfif" alt="img">
+                                <img src="../../dist/img/ShowImage.svg" alt="img">
                             </a>
                             <div class="option-upload">
                                 <a href="https://www.iloveimg.com/vi/cong-cu-tao-meme" target="_blank"><i class="fa fa-globe"></i> Chế ảnh từ MeMe</a>
@@ -78,8 +78,8 @@
 
 export default {
     name:'post-page',
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }

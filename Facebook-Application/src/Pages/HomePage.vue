@@ -1,7 +1,5 @@
 <template>
     <div>
-        <header-page/>
-        
         <main class="main">
             <div class="container">
                 <div class="row">
@@ -80,8 +78,8 @@ export default {
     components:{
         HeaderPage
     },
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }

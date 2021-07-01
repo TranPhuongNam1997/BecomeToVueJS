@@ -66,7 +66,7 @@ const routes = [
     // trang 404
     {
         path: '*',
-        name: 'notfound',
+        name: 'not-found',
         component: NotFound
     }
 ]

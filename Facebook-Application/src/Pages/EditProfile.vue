@@ -52,8 +52,8 @@
 
 export default {
     name:'edit-profile-page',
-    data:{
-        return:{
+    data(){
+        return{
             
         }
     }
