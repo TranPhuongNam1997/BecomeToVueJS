@@ -24,7 +24,10 @@ export default {
 			if(arrnamenonavigation.indexOf(this.$route.name) !== -1 ) return false
 			return true
 		}
-		
+	},
+	created(){
+		console.log(this.$store)
+		this.$store.dispatch('getListPostHasPaging', { })
 	}
 }
 </script>

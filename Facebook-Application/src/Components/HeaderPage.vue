@@ -45,49 +45,17 @@
 
         </div>
         <!-- begin navigation-->
-        <div class="navigation">
-            <div class="container">
-                <div class="nav-block">
-                    <ul>
-                        <li><a href="#">Funny</a></li>
-                        <li><a href="#">Animals</a></li>
-                        <li><a href="#">Anime & Mâng</a></li>
-                        <li><a href="#">Awesome</a></li>
-                        <li><a href="#">Basketball</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#">Car</a></li>
-                        <li><a href="#">Comic</a></li>
-                        <li><a href="#">Cosplay</a></li>
-                        <li><a href="#">Countryballs</a></li>
-                        <li><a href="#">Classical Art Memes</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#">Girl</a></li>
-                        <li><a href="#">History</a></li>
-                        <li><a href="#">K-POP</a></li>
-                        <li><a href="#">V-POP</a></li>
-                        <li><a href="#">Pokémon</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#">School</a></li>
-                        <li><a href="#">Star war</a></li>
-                        <li><a href="#">Coder</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Sport</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
+        <navigation-page/>
         <!-- end navigation-->
     </header>
 </template>
 
 
 <script>
+import NavigationPage from './NavigationPage.vue'
 // import $ from "jquery";
 export default {
+  components: { NavigationPage },
     name: 'header-comp',
     data(){
         return{
@@ -95,30 +63,10 @@ export default {
         }
     },
     mounted(){
-        // $(".btn-category").click(function (event) {
-        //     console.log('a')
-        //     $('.navigation').slideToggle(300,'swing');
-        //     $(this).toggleClass('active');
-        //     event.stopPropagation();
-        // });
         
-        // const $menu = $('.header-home');
-        // $(document).mouseup(e => {
-        //     if (!$menu.is(e.target)
-        //         && $menu.has(e.target).length === 0)
-        //     {
-        //         $('.btn-category').removeClass('active');
-        //         $('.navigation').slideUp(300,'swing');
-        //     }
-        // });
     },
     methods:{
-        // onclickCategory(event){
-        //     console.log(event);
-        //     $('.navigation').slideToggle(300,'swing');
-        //     $(this).toggleClass('active');
-        //      event.stopPropagation();
-        // }
+       
     }
     
 }
