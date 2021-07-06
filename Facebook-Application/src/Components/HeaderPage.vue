@@ -32,13 +32,13 @@
                         </svg>
                         <span>Danh mục</span>
                     </button>
-                    <a href="#" class="upload-post">
+                    <router-link to="/post-page" class="upload-post">
                         <label tabindex="0" class="input-file-trigger">
                             <img src="../../dist/img/icon-upload-light-12.svg" alt="">
                             <span>Đăng bài</span>
                         </label>
-                    </a>
-                    <a href="#" class="link-login">Đăng nhập</a>
+                    </router-link>
+                    <router-link to="/login" class="link-login">Đăng nhập</router-link>
 
                 </div>
             </div>

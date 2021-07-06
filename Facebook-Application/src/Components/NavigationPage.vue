@@ -6,10 +6,7 @@
                     <li class="w-25" v-for="item in getTextNav" :key="item.id">
                         <router-link :to="ridirectlinkcategory(item)">{{item.Text}}</router-link>
                     </li>
-                    
                 </ul>
-                
-
             </div>
         </div>
     </div>
