@@ -67,6 +67,12 @@ $(document).ready(function (event) {
         event.stopPropagation();
     });
     
+    $(".nav-block ul li a").click(function () {
+       $('.navigation').slideUp(300,'swing');
+       $(".btn-category").removeClass('active');
+    });
+
+    
     const $menu = $('.header-home');
     $(document).mouseup(e => {
         if (!$menu.is(e.target)

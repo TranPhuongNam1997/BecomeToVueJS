@@ -4,7 +4,7 @@
             <div class="header-block">
                 <div class="header-left">
                     <div class="logo">
-                        <a href="#">
+                        <router-link to="/">
                             <svg viewBox="0 0 36 36" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4" fill="url(#jsc_c_3)"
                                  height="40" width="40">
                                 <defs>
@@ -17,7 +17,7 @@
                                 <path fill="#fff" class="p361ku9c"
                                       d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"></path>
                             </svg>
-                        </a>
+                        </router-link>
                     </div>
                     <div class="box-search">
                         <input type="text" placeholder="Tìm kiếm trên Facebook">

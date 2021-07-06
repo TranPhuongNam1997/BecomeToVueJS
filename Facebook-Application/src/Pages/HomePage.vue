@@ -7,14 +7,9 @@
                         <div class="post-list">
 
                             <!-- Danh sách bài viết -->
-                            <post-list 
-                                v-for="item in getterGetList"
-                                :key="item.PID"
-                                :post="item"
-                            />
-                            <div class="text-center mt-3 mb-4">
-                                <button class="view-more">Xem thêm <i class="fa fa-angle-down"></i></button>
-                            </div>
+                            <post-list/>
+                            
+                            
 
                         </div>
                     </div>
@@ -37,7 +32,7 @@
 import HeaderPage from '../Components/HeaderPage.vue'
 import PostList from '../Components/PostList.vue'
 
-import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
     name:'home-page',
@@ -50,12 +45,31 @@ export default {
             
         }
     },
+    methods:{
+        ...mapActions(['getListPostHasPaging'])
+    },
     computed:{
-        ...mapGetters(['getterGetList'])
+        
+    },
+    watch: {
+        $route(to, from) {
+            var tagIndex = to.query.tagindex
+            if(tagIndex){
+                // gọi api category
+                this.getListPostHasPaging({tagIndex});
+            }
+            else{
+                //gọi lại api thường
+                this.getListPostHasPaging({ });
+            }
+        }
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+    .txt-nodata{
+        color: #737171;
+        font-size: 20px;
+    }
 </style>
