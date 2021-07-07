@@ -13,7 +13,7 @@
 
 <script>
 import { PAGE_SIZE, CURREN_PAGE } from '../Constant'
-import { mapGetters } from 'vuex'
+import { mapGetters , mapActions } from 'vuex'
 import PostListItem from './PostListItem.vue'
 
 export default {
@@ -22,20 +22,39 @@ export default {
     name: 'post-list',
     data(){
         return{
+            //tạo ra 2 biến tạm
             pagesize: PAGE_SIZE,
-            currpage: CURREN_PAGE
+            currpage: CURREN_PAGE,
+            tagindex : parseInt(this.$route.query.tagindex),
+        }
+    },
+    watch: {
+        $route(to, from) {
+            // console.log(to)
+            this.tagindex = to.query.tagindex;
+            this.currpage = 1
+            
         }
     },
     methods:{
+        ...mapActions(['getListPostHasPaging']),
         btnViewMore(){
             //khi thực hiện click thì tăng currpage thêm 1 đơn vị
             this.currpage = this.currpage + 1;
             //gọi lại api thêm 1 lần nữa
+            let obj = ({
+                pagesize : this.pagesize,
+                currPage : this.currpage,
+                tagIndex : this.tagindex
+            })
+            console.log(obj);
+            this.getListPostHasPaging(obj)
         }
     },
     computed:{
         ...mapGetters(['getterGetList'])
     },
+    
 }
 </script>
 

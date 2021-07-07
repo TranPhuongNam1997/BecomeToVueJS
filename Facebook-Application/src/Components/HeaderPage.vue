@@ -42,7 +42,6 @@
 
                 </div>
             </div>
-
         </div>
         <!-- begin navigation-->
         <navigation-page/>
@@ -53,7 +52,7 @@
 
 <script>
 import NavigationPage from './NavigationPage.vue'
-// import $ from "jquery";
+
 export default {
   components: { NavigationPage },
     name: 'header-comp',
@@ -62,12 +61,33 @@ export default {
 
         }
     },
-    mounted(){
-        
-    },
-    methods:{
-       
-    }
+
+	mounted(){
+		// begin click outside
+			$(".btn-category").click(function (event) {
+				$('.navigation').slideToggle(300,'swing');
+				$(this).toggleClass('active');
+				event.stopPropagation();
+			});
+			
+			$(".nav-block ul li a").click(function () {
+				$('.navigation').slideUp(300,'swing');
+				$(".btn-category").removeClass('active');
+			});
+
+			
+			const $menu = $('.header-home');
+			$(document).mouseup(e => {
+				if (!$menu.is(e.target)
+					&& $menu.has(e.target).length === 0)
+				{
+					$('.btn-category').removeClass('active');
+					$('.navigation').slideUp(300,'swing');
+				}
+			});
+		
+		
+	}
     
 }
 </script>

@@ -8,8 +8,6 @@
 
                             <!-- Danh sách bài viết -->
                             <post-list/>
-                            
-                            
 
                         </div>
                     </div>
@@ -51,19 +49,21 @@ export default {
     computed:{
         
     },
+    //watch $route chỉ chạy khi có sự thay đổi route
+    // Nếu lần load đầu tiên -> không có chạy
     watch: {
         $route(to, from) {
             var tagIndex = to.query.tagindex
-            if(tagIndex){
-                // gọi api category
-                this.getListPostHasPaging({tagIndex});
-            }
-            else{
-                //gọi lại api thường
-                this.getListPostHasPaging({ });
-            }
+            this.getListPostHasPaging({tagIndex});
+            //Nếu nhẩy ra homepage thì tagIndex -> underfind không vấn đề gì 
+            //Nếu nhẩy ra homepage có thêm query -> tagIndex có giá trị
         }
-    }
+    },
+    // khi load lại trang
+    created(){
+        var tagIndex = this.$route.query.tagindex
+        this.getListPostHasPaging({tagIndex})
+	},
 }
 </script>
 
