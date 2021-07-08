@@ -20,15 +20,34 @@ export default{
                 var result = await axiosInstance.get('/post/getListPagination.php?',thamso);
             }
             commit('SET_LOADING',false);
-            if(result.data && result.data.status == 200){
+            if(result.data && result.data.status === 200){
                 if(currPage == 1) commit('SET_LIST_POST',result.data.posts)
                 else if(currPage > 1) commit('PUSH_LIST_POST',result.data.posts)
 
             }
             
         } catch (error) {
+            commit('SET_LOADING',false);
             console.log('error = ',error)
         }
     },
+    
+    async getPostDetailByPostId({commit},postId){
+        commit('SET_LOADING',true);
+        try {
+            var result = await axiosInstance.get('/post/post.php?postid' + postId);
+            commit('SET_LOADING',false);
+
+            if(result.data.status === 200){
+                // commit('SET_LIST_POST',result.data)
+                console.log('result.data = ', result.data)
+            }
+
+        } catch (error) {
+            commit('SET_LOADING',false);
+            console.log('error = ',error)
+            
+        }
+    }
 
 }

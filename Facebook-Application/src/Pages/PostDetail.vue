@@ -218,12 +218,30 @@
 
 <script>
 
+import {mapActions} from 'vuex'
+
 export default {
     name:'post-detail-page',
     data(){
         return{
-            
+            postId: this.$route.params.id,
+
         }
+
+    },
+    watch: {
+        $route(to, from) {
+            this.postId = to.params.id
+            this.getPostDetailByPostId(postId)
+        }
+    },
+    created(){
+        this.getPostDetailByPostId(this.postId);
+        console.log('abc')
+    },
+    methods:{
+
+        ...mapActions(['getPostDetailByPostId']),
     }
 }
 </script>

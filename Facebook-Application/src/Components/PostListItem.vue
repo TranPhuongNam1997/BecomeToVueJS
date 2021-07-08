@@ -16,7 +16,7 @@ export default {
     name: 'post-list-item',
     data(){
         return{
-
+            
         }
     },
     props:{

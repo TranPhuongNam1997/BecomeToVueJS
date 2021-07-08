@@ -12,6 +12,9 @@
 
 <script>
 // import $ from "jquery";
+// import './assets/js/script.js'
+
+
 import { mapState } from 'vuex'
 import HeaderPage from './Components/HeaderPage.vue'
 export default {
@@ -31,6 +34,11 @@ export default {
 		},
 		...mapState(['isloading'])
 	},
+	mounted(){
+		// let recaptchaScript = document.createElement('script')
+		// recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js')
+		// document.head.appendChild(recaptchaScript)
+	}
 	
 }
 </script>
