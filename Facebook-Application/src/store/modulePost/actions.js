@@ -32,20 +32,44 @@ export default{
         }
     },
     
-    async getPostDetailByPostId({commit},postId){
+    async getPostDetailByPostId({commit,dispatch},postId){
+        console.log('Khoi động getPostDetailByPostId')
+
         commit('SET_LOADING',true);
         try {
-            var result = await axiosInstance.get('/post/post.php?postid' + postId);
+            var result = await axiosInstance.get('/post/post.php?postid=' + postId);
             commit('SET_LOADING',false);
 
+
+            //nếu thành công
             if(result.data.status === 200){
-                // commit('SET_LIST_POST',result.data)
-                console.log('result.data = ', result.data)
+                // console.log('result.data = ', result.data)
+                
+                //chạy qua action của user
+                console.log('Chạy vào action của user')
+                var UserResuilt = await dispatch('getUserById');
+                console.log('Da vao UserResuilt = ',UserResuilt)
+                
+
+                commit('SET_POST_DETAIL',result.data.data)
+                return{
+                    ok: true,
+                    data: result.data.data,
+                    error: null
+
+                }
             }
 
         } catch (error) {
+
             commit('SET_LOADING',false);
-            console.log('error = ',error)
+            //nếu thất bại
+            
+            return{
+                ok: false,
+                error: error.message
+            }
+
             
         }
     }

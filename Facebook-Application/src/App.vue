@@ -36,8 +36,10 @@ export default {
 	},
 	mounted(){
 		// let recaptchaScript = document.createElement('script')
-		// recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js')
+		// recaptchaScript.setAttribute('src', './dist/js/script.js')
 		// document.head.appendChild(recaptchaScript)
+
+		
 	}
 	
 }

@@ -9,5 +9,8 @@ export default{
     // TH2 nếu currenpage = 2,3,4 thì đẩy thêm giữ liệu vào ( nối  array lại với nhau)
     PUSH_LIST_POST(state,data){
         state.listPost = [...state.listPost, ...data]
+    },
+    SET_POST_DETAIL(state,data){
+        state.postDetail = data
     }
 }

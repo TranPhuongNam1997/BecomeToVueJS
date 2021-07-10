@@ -73,7 +73,7 @@
                             <div class="your-cmt">
                                 <a href="#" class="avt-yourcmt">
                                     <img
-                                            src="https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-1/cp0/p32x32/109116642_278706606677722_7309285219947855714_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=7206a8&_nc_ohc=dV2by5ahqQQAX_cZsWB&_nc_ht=scontent-hkg4-1.xx&tp=27&oh=4c285faee0fd396fd86b7d7ab9daf0e9&oe=60DED7A7"
+                                            src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
                                             alt="img">
                                 </a>
                                 <div class="field-yourcmt">
@@ -95,7 +95,7 @@
                                             <button class="reply-cmt"><i class="fa fa-reply"></i></button>
                                             <a href="#" class="avtbox-cmt-parent">
                                                 <img
-                                                        src="https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-1/cp0/p32x32/131314735_851021442489382_4223404709583493270_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=7206a8&_nc_ohc=ApUsgYsb_ZoAX--wDZL&tn=sXqwopx8LR_Yh1_Q&_nc_ht=scontent-hkg4-1.xx&tp=27&oh=040f7343cf4a12af6c41b96525c708e1&oe=60DFF7A4"
+                                                        src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
                                                         alt="img">
                                             </a>
                                             <div class="txt-cmt">
@@ -109,7 +109,7 @@
                                                 <div class="box-cmt-child">
                                                     <a href="#" class="avtbox-cmt-child">
                                                         <img
-                                                            src="https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-1/cp0/p32x32/131314735_851021442489382_4223404709583493270_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=7206a8&_nc_ohc=ApUsgYsb_ZoAX--wDZL&tn=sXqwopx8LR_Yh1_Q&_nc_ht=scontent-hkg4-1.xx&tp=27&oh=040f7343cf4a12af6c41b96525c708e1&oe=60DFF7A4"
+                                                            src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
                                                             alt="img">
                                                     </a>
                                                     <div class="txt-cmt">
@@ -123,7 +123,7 @@
                                                 <div class="box-cmt-child">
                                                     <a href="#" class="avtbox-cmt-child">
                                                         <img
-                                                            src="https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-1/cp0/p32x32/131314735_851021442489382_4223404709583493270_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=7206a8&_nc_ohc=ApUsgYsb_ZoAX--wDZL&tn=sXqwopx8LR_Yh1_Q&_nc_ht=scontent-hkg4-1.xx&tp=27&oh=040f7343cf4a12af6c41b96525c708e1&oe=60DFF7A4"
+                                                            src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
                                                             alt="img">
                                                     </a>
                                                     <div class="txt-cmt">
@@ -142,7 +142,7 @@
                                             <button class="reply-cmt"><i class="fa fa-reply"></i></button>
                                             <a href="#" class="avtbox-cmt-parent">
                                                 <img
-                                                        src="https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-1/cp0/p32x32/131314735_851021442489382_4223404709583493270_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=7206a8&_nc_ohc=ApUsgYsb_ZoAX--wDZL&tn=sXqwopx8LR_Yh1_Q&_nc_ht=scontent-hkg4-1.xx&tp=27&oh=040f7343cf4a12af6c41b96525c708e1&oe=60DFF7A4"
+                                                        src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
                                                         alt="img">
                                             </a>
                                             <div class="txt-cmt">
@@ -156,7 +156,7 @@
                                                 <div class="box-cmt-child">
                                                     <a href="#" class="avtbox-cmt-child">
                                                         <img
-                                                            src="https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-1/cp0/p32x32/131314735_851021442489382_4223404709583493270_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=7206a8&_nc_ohc=ApUsgYsb_ZoAX--wDZL&tn=sXqwopx8LR_Yh1_Q&_nc_ht=scontent-hkg4-1.xx&tp=27&oh=040f7343cf4a12af6c41b96525c708e1&oe=60DFF7A4"
+                                                            src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
                                                             alt="img">
                                                     </a>
                                                     <div class="txt-cmt">
@@ -225,23 +225,29 @@ export default {
     data(){
         return{
             postId: this.$route.params.id,
-
         }
 
     },
     watch: {
         $route(to, from) {
             this.postId = to.params.id
-            this.getPostDetailByPostId(postId)
+            this.fetchDataPostDetail();
+            
         }
     },
     created(){
-        this.getPostDetailByPostId(this.postId);
-        console.log('abc')
+        this.fetchDataPostDetail();
+        
     },
     methods:{
-
         ...mapActions(['getPostDetailByPostId']),
+        fetchDataPostDetail(){
+            //promise
+            this.getPostDetailByPostId(this.postId).then(res =>{
+                console.log("res = ",res)
+                if(!res.ok) this.$router.push('/');
+            })
+        }
     }
 }
 </script>
