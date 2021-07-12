@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 	.loading-progressbar{
 		animation-name: e5hlw9lw-B;
 		animation-duration: 0.5s;
@@ -62,6 +62,7 @@ export default {
 		z-index: 99;
 		transition: all 0.3s ease;
 	}
+	
 	.loading-progressbar.active{
 		opacity: 1;
 		transition: all 0.3s ease;

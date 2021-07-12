@@ -50,15 +50,7 @@ $(function() {
 
 $(document).ready(function (event) {
 
-    $('.showhide-pass div').click(function () {
-        var x = document.getElementById("password-login");
-        $('.showhide-pass div').toggleClass('active');
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    });
+    
 
     // // begin click outside
 

@@ -8,10 +8,10 @@
                 <form action="">
                     <div class="form-login">
                         <div class="field-ip">
-                            <input type="text" placeholder="Email hoặc số điện thoại">
+                            <input v-model="email" type="text" placeholder="Email hoặc số điện thoại">
                         </div>
                         <div class="field-ip">
-                            <input id="password-login" type="password" placeholder="Mật khẩu">
+                            <input v-model="password" id="password-login" type="password" placeholder="Mật khẩu">
                             <div class="showhide-pass">
                                 <div class="show-pass">
                                     <img class="" src="../../dist/img/iconshowpass.png" alt="img">
@@ -22,7 +22,7 @@
                             </div>
                         </div>
 
-                        <button class="btn-login ripple">Đăng nhập</button>
+                        <button class="btn-login ripple" @click="handleLogin">Đăng nhập</button>
                     </div>
                 </form>
                 <div class="line-login"></div>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 import Register from '../Components/Register.vue'
 
 export default {
@@ -44,8 +45,25 @@ export default {
     name:'login-page',
     data(){
         return{
+            email: '',
+            password: ''
+        }
+    },
+    methods:{
+        handleLogin(){
             
         }
+    },
+    mounted(){
+        $('.showhide-pass div').click(function () {
+            var x = document.getElementById("password-login");
+            $('.showhide-pass div').toggleClass('active');
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        });
     }
 }
 </script>
