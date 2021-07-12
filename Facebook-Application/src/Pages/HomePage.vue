@@ -64,7 +64,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .txt-nodata {
 	color: #737171;
 	font-size: 20px;

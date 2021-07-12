@@ -5,7 +5,7 @@
         </div>
         <div class="post-img">
             <router-link :to="setLinkImagePost">
-                <img :src="post.url_image" :alt="post.url_image" class="w-100">
+                <img :src="post.url_image" :alt="post.url_image" class="w-100" @error="imageUrlAlt">
             </router-link>
         </div>
     </div>
@@ -23,6 +23,11 @@ export default {
         post:{
             type: Object,
             default: {}
+        }
+    },
+    methods:{
+        imageUrlAlt(event) {
+            event.target.src = "../../dist/img/img-errors3.png"
         }
     },
     computed:{

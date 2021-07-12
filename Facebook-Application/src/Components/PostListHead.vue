@@ -1,6 +1,6 @@
 <template>
     <div class="post-item-flex">
-        <router-link :to="setLinkPersonal" class="box-img"><img :src="setImageAvt" :alt="post.fullname"></router-link>
+        <router-link :to="setLinkPersonal" class="box-img"><img :src="setImageAvt" @error="imageUrlAlt" :alt="post.fullname"></router-link>
         <div>
             <router-link :to="setLinkPersonal" class="name-post">{{post.fullname}}</router-link>
             <div class="post-time">{{timePost}} <i class="hu5pjgll m6k467ps"></i></div>
@@ -24,6 +24,11 @@ export default {
             default: {}
         }
     },
+    methods:{
+        imageUrlAlt(event) {
+            event.target.src = "../../dist/img/defaultavt.png"
+        }
+    },
     computed:{
         timePost(){
             moment.locale('vi');
@@ -35,7 +40,8 @@ export default {
         },
         setLinkPersonal(){
             return {name: 'personal',params:{id: this.post.USERID}}
-        }
+        },
+        
     }
 }
 </script>

@@ -38,7 +38,7 @@ export default{
         commit('SET_LOADING',true);
         try {
             var result = await axiosInstance.get('/post/post.php?postid=' + postId);
-            commit('SET_LOADING',false);
+            console.log("resuilt", result)
 
 
             //nếu thành công
@@ -47,9 +47,10 @@ export default{
                 
                 //chạy qua action của user
                 console.log('Chạy vào action của user')
-                var UserResuilt = await dispatch('getUserById');
+                var UserResuilt = await dispatch('getUserById',result.data.data.post.USERID);
                 console.log('Da vao UserResuilt = ',UserResuilt)
-                
+
+                commit('SET_LOADING',false);
 
                 commit('SET_POST_DETAIL',result.data.data)
                 return{
