@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import removeVietnameseFromString from '../Helper'
+import {removeVietnameseFromString} from '../Helper'
 export default {
     name:'navigation-page',
     data(){

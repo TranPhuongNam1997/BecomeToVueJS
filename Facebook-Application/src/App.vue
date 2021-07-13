@@ -7,6 +7,7 @@
 		<div :class="{active: isloading}" class="loading-progressbar">
 			<div class="paclfcx5"></div>
 		</div>
+		<notifications group="foo" position="right bottom" />
 	</div>
 </template>
 
@@ -15,7 +16,7 @@
 // import './assets/js/script.js'
 
 
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import HeaderPage from './Components/HeaderPage.vue'
 export default {
   components: { HeaderPage },
@@ -24,6 +25,9 @@ export default {
 		return {
 			
 		}
+	},
+	methods:{
+		...mapActions(['checkLogin'])
 	},
 	computed:{
 		// xử lý phần navigation
@@ -34,12 +38,8 @@ export default {
 		},
 		...mapState(['isloading'])
 	},
-	mounted(){
-		// let recaptchaScript = document.createElement('script')
-		// recaptchaScript.setAttribute('src', './dist/js/script.js')
-		// document.head.appendChild(recaptchaScript)
-
-		
+	created(){
+		this.checkLogin();
 	}
 	
 }

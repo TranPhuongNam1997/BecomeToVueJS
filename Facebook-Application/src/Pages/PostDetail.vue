@@ -13,7 +13,6 @@
                             <your-comment/>
 
                             <post-comment/>
-                            
 
                         </div>
 
@@ -110,5 +109,6 @@ export default {
     }
     .txt-cmt-name:hover{
         text-decoration: underline;
+        
     }
 </style>

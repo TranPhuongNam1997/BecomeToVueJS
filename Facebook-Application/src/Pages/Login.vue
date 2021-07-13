@@ -2,10 +2,13 @@
     <div class="container-login">
         <div class="flex-login">
             <div class="text-center">
-                <img class="logo-login" src="../../dist/img/logo.svg" alt="img">
+                <router-link to="/">
+                    <img class="logo-login" src="../../dist/img/logo.svg" alt="img">
+
+                </router-link>
             </div>
             <div class="bg-white">
-                <form action="">
+                <form action="#" v-on:submit.prevent="handleSubmitLogin">
                     <div class="form-login">
                         <div class="field-ip">
                             <input v-model="email" type="text" placeholder="Email hoặc số điện thoại">
@@ -22,7 +25,7 @@
                             </div>
                         </div>
 
-                        <button class="btn-login ripple" @click="handleLogin">Đăng nhập</button>
+                        <button class="btn-login ripple" type="submit" >Đăng nhập</button>
                     </div>
                 </form>
                 <div class="line-login"></div>
@@ -37,6 +40,12 @@
 </template>
 
 <script>
+
+import Vue from 'vue'
+import { mapActions } from 'vuex'
+import Notifications from 'vue-notification'
+Vue.use(Notifications)
+
 import $ from "jquery";
 import Register from '../Components/Register.vue'
 
@@ -46,12 +55,68 @@ export default {
     data(){
         return{
             email: '',
-            password: ''
+            password: '',
+            listError: [],
         }
     },
     methods:{
-        handleLogin(){
+        
+        ...mapActions(['login']),
+
+        handleSubmitLogin(){
+            let data = {
+                email : this.email,
+                password : this.password
+            }
+            if(!this.email){
+                this.listError.push('Email không được bỏ trống')
+            }
+            if(!this.password){
+                this.listError.push('Mật khẩu không được bỏ trống')
+            }
+            if(this.listError){
+                this.$notify({
+                    group: 'foo',
+                    type:  'error',
+                    title: 'Thông báo từ Facebook Fake',
+                    text: this.listError.join(' , '),
+                });
+            }
             
+            // do bên action là function aysicn nên trả về 1 cái promise để chờ xử lý thì dùng cái response
+            // chỉ xử lý trong trường hợp lỗi thôi
+            this.login(data).then(res =>{
+                if(!res.ok){
+                    if(typeof res.error === 'string'){
+                        var joinError = res.error;
+                        this.$notify({
+                            group: 'foo',
+                            type:  'error',
+                            title: 'Thông báo từ Facebook Fake',
+                            text: joinError,
+                        });
+                    }
+                    else{
+                        var joinError = res.error.join(' , ');
+                        this.$notify({
+                            group: 'foo',
+                            type:  'error',
+                            title: 'Thông báo từ Facebook Fake',
+                            text: joinError,
+                        });
+                    }
+                }
+                else{
+                    this.$notify({
+                        group: 'foo',
+                        type:  'success',
+                        title: 'Thông báo từ Facebook Fake',
+                        text: 'Đăng nhập thành công',
+                    });
+                    this.$router.push('/')
+                }
+            })
+            this.listError = []
         }
     },
     mounted(){

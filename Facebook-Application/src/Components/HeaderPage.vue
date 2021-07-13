@@ -38,7 +38,19 @@
                             <span>Đăng bài</span>
                         </label>
                     </router-link>
+
                     <router-link to="/login" class="link-login">Đăng nhập</router-link>
+
+                    <a href="#" class="name-user">
+                        <img src="../../dist/img/icon-upload-light-12.svg" alt="img">
+                        <span>Trần Nam</span>
+                        <div class="show-logout">
+                            <div class="show-logoutchild">
+                                <router-link to="/login" ><i class="fa fa-sign-out-alt"></i> Đăng xuất</router-link>
+
+                            </div>
+                        </div>
+                    </a>
 
                 </div>
             </div>
@@ -88,14 +100,72 @@ export default {
 				}
 			});
         })
-		
-		
-		
+
 	}
     
 }
 </script>
 
-<style>
+<style scoped>
+    .name-user{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-left: 8px;
+        transition: all 0.2s ease;
+        padding: 4px 10px 4px 4px;
+        border-radius: 30px;
+        
+    }
+    .name-user:hover{
+        background: #F2F2F2;
+        color: #1e1633;
 
+        transition: all 0.2s ease;
+    }
+    .name-user img{
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: cover;
+    }
+    .name-user span{
+        font-weight: 500;
+        font-size: 15px;
+        margin-left: 6px;
+    }
+    .name-user .show-logout{
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-top: 10px;
+        display: none;
+    }
+    .name-user:hover .show-logout{
+        display: block;
+    }
+    .name-user .show-logout:after{
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\F0D8";
+        position: absolute;
+        top: -7px;
+        left: 50%;
+        color: #fff;
+        transform: translateX(-50%);
+        font-size: 21px;
+        text-shadow: 0 -1px 5px #dcdcdc;
+    }
+    .show-logoutchild{
+        width: 200px;
+        background: #fff;
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.14);
+        padding: 10px;
+        border-radius: 6px;
+    }
+    .name-user .show-logout:hover{
+        color: #1e1633;
+    }
 </style>
