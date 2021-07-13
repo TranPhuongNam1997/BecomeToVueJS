@@ -11,5 +11,10 @@ export default{
         localStorage.setItem('ACCESS_TOKEN',token)
         state.currentUser = user;
         state.ACCESS_TOKEN = token
+    },
+    LOG_OUT(state){
+        state.currentUser = null;
+        state.ACCESS_TOKEN = '';
+        localStorage.removeItem('ACCESS_TOKEN')
     }
 }

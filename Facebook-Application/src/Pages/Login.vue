@@ -14,7 +14,7 @@
                             <input v-model="email" type="text" placeholder="Email hoặc số điện thoại">
                         </div>
                         <div class="field-ip">
-                            <input v-model="password" id="password-login" type="password" placeholder="Mật khẩu">
+                            <input v-model="password" id="password-login" type="password" placeholder="Mật khẩu" autocomplete="on">
                             <div class="showhide-pass">
                                 <div class="show-pass">
                                     <img class="" src="../../dist/img/iconshowpass.png" alt="img">

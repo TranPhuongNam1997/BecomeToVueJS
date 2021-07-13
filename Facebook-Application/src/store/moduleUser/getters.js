@@ -1,16 +1,20 @@
 
-import {parseJwt} from '../../Helper'
+import { parseJwt }  from '../../Helper'
 
 export default {
-    isLogin : state =>{
+    isLogin : state => {
         let checkToken = parseJwt(state.ACCESS_TOKEN);
 
-        if(checkToken) return true
+        console.log('checkToken = ',checkToken)
+        if(checkToken){
+            return true
+        } 
 
-        else return false
-
+        else{
+            return false
+        } 
     }, 
-    currentUser : state =>{
+    currentUser : state => {
         return state.currentUser
     }
 }

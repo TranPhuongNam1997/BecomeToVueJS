@@ -39,15 +39,15 @@
                         </label>
                     </router-link>
 
-                    <router-link to="/login" class="link-login">Đăng nhập</router-link>
+                    <!-- if not login -->
+                    <router-link v-if="!isLogin" to="/login" class="link-login">Đăng nhập</router-link>
 
-                    <a href="#" class="name-user">
-                        <img src="../../dist/img/icon-upload-light-12.svg" alt="img">
-                        <span>Trần Nam</span>
+                    <a v-else href="javascript:0;" class="name-user">
+                        <img :src="getImgAvtNav" alt="img">
+                        <span>{{getNameUser}}</span>
                         <div class="show-logout">
                             <div class="show-logoutchild">
-                                <router-link to="/login" ><i class="fa fa-sign-out-alt"></i> Đăng xuất</router-link>
-
+                                <a v-on:click.prevent="handleLogout"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
                             </div>
                         </div>
                     </a>
@@ -63,6 +63,7 @@
 
 
 <script>
+import { mapGetters,mapActions } from 'vuex'
 import $ from "jquery";
 import NavigationPage from './NavigationPage.vue'
 
@@ -71,7 +72,25 @@ export default {
     name: 'header-comp',
     data(){
         return{
-
+            
+        }
+    },
+    computed:{
+        ...mapGetters(['isLogin','currentUser']),
+        getImgAvtNav(){
+            return this.currentUser.profilepicture
+        },
+        getNameUser(){
+            return this.currentUser.fullname
+        }
+    },
+    methods:{
+        ...mapActions(['logOut']),
+        handleLogout(){
+            this.logOut().then(res =>{
+                this.$router.push('/login')
+            })
+            
         }
     },
 
@@ -159,7 +178,7 @@ export default {
         text-shadow: 0 -1px 5px #dcdcdc;
     }
     .show-logoutchild{
-        width: 200px;
+        width: 150px;
         background: #fff;
         box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.14);
         padding: 10px;
@@ -167,5 +186,13 @@ export default {
     }
     .name-user .show-logout:hover{
         color: #1e1633;
+    }
+    .show-logoutchild a:hover{
+        color: #000;
+    }
+    .show-logoutchild i{
+        margin-right: 6px;
+
+        color: #3576F1;
     }
 </style>

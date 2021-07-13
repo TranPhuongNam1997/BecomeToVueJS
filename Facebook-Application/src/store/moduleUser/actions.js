@@ -1,6 +1,6 @@
 import axiosInstance from "../../Plugin/axios"
 
-import {parseJwt} from '../../Helper'
+import { parseJwt } from '../../Helper'
 
 export default{
     async getUserById({commit},userid){
@@ -47,6 +47,8 @@ export default{
                 commit('SET_USER_BYID',result.data.user)
                 commit('SET_LOGIN_INFO',result.data)
 
+                // dispatch('getListPostsByUserId', result.data.user.USERID);
+
                 return{
                     ok: true,
                     data: result.data,
@@ -91,6 +93,7 @@ export default{
                         error:null
                     }
                 }
+                
             }
             return{
                 ok: false,
@@ -105,6 +108,10 @@ export default{
             }
         }
 
+    },
+    
+    async logOut({commit}){
+        commit('LOG_OUT')
     }
 
 }
