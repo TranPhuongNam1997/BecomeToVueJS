@@ -12,18 +12,12 @@
                     <div class="txt-clickimg">Nhấp vào ảnh của bạn hoặc thêm tài khoản.</div>
                     
                     <!-- hackuser -->
-                    <div @click.prevent="handleSigninCache" class="box-img-login">
-
-
-                        <a v-for="(item,index) in arrayLocalAccount" :key="index">
-                            <div class="box-img-block">
-                                <img :src="item.linkimglogin" alt="img">
-                            </div>
-                            <span>{{item.namesuggest}}</span>
-                        </a>
-
-
-                    </div>
+                    <a v-for="(item,index) in arrayLocalAccount" :key="index"  @click.prevent="handleSigninCache(item)" class="box-img-login">
+                        <div class="box-img-block">
+                            <img :src="item.nameimg" alt="img">
+                        </div>
+                        <span>{{item.nameUser}}</span>
+                    </a>
                     
                     
                     <a href="#" class="box-img-login add-acc">
@@ -157,18 +151,23 @@ export default {
             })
             this.listError = []
         },
-        handleSigninCache(){
-            let getDataTokenLocalStorage = parseJwt(localStorage.ACCESS_TOKEN)
+        handleSigninCache(item){
+            // console.log('item',item)
+            // let getDataTokenLocalStorage = parseJwt(localStorage.ACCESS_TOKEN)
 
-            console.log('getDataTokenLocalStorage = ' ,getDataTokenLocalStorage);
+            // console.log('getDataTokenLocalStorage = ' ,getDataTokenLocalStorage);
             // var retrievedObject = ;
 
-            var retrievedObjectAfterConvert = JSON.parse(localStorage.getItem('save_account'))
-            console.log('retrievedObjectAfterConvert = ',retrievedObjectAfterConvert)
+            // var retrievedObjectAfterConvert = JSON.parse(localStorage.getItem('save_account'))
+
+            // console.log('filterData',filterData)
+            // console.log('retrievedObjectAfterConvert = ',retrievedObjectAfterConvert)
+
+
             let data = {
-                email : retrievedObjectAfterConvert.email,
-                password : retrievedObjectAfterConvert.password
-            }
+                email : item.email,
+                password : item.password
+            }   
 
             this.login(data).then(res =>{
                 this.$router.push('/')
@@ -178,7 +177,8 @@ export default {
     },
     computed:{
         arrayLocalAccount(){
-            console.log('arrayLocalStorage',JSON.parse(localStorage.getItem('save_account')))
+            console.log('arrayLocalAccount',JSON.parse(localStorage.getItem('save_account')))
+
             return JSON.parse(localStorage.getItem('save_account'))
         },
         ...mapGetters(['currentUser']),

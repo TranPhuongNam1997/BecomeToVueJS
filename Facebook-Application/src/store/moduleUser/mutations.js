@@ -31,8 +31,20 @@ export default{
         // let filterdata = clonedatahack(arrayLocalStorage)
 
         // console.log('filterdata', filterdata)
-        arrayLocalStorage.push(datahack);
-        localStorage.setItem('save_account', JSON.stringify(arrayLocalStorage));
+        // let atcspbixoa = state.dsgiohang.filter(item => {
+        //     return item.sanpham.id !== spbixoa.sanpham.id;
+        // })
+        const index = arrayLocalStorage.findIndex(function(item){
+            //trả về điều kiện
+            return item.email === datahack.email;
+        });
+        console.log(index);
+        if(index === -1){
+            arrayLocalStorage.push(datahack);
+            localStorage.setItem('save_account', JSON.stringify(arrayLocalStorage));
+
+            
+        }
 
         // if(filterdata != -1){
         // }

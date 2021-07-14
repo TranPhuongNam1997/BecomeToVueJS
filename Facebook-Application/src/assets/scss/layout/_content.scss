@@ -40,6 +40,7 @@
   transition: all .2s ease-out;
   -webkit-user-select: none;
   border-radius: 8px;
+  margin-bottom: 15px;
   &:hover{
     box-shadow: 0 1px 8px 5px #dddfe2;
     text-decoration: none;
@@ -58,7 +59,7 @@
     border-bottom-right-radius: 8px;
     background: #fff;
     color: #4b4f56;
-    font-size: 18px;
+    font-size: 16px;
 
   }
   &.add-acc{

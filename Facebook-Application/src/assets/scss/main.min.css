@@ -1300,7 +1300,8 @@ input:focus {
   box-shadow: 0 0 0 1px #dddfe2;
   transition: all .2s ease-out;
   -webkit-user-select: none;
-  border-radius: 8px; }
+  border-radius: 8px;
+  margin-bottom: 15px; }
   .box-img-login:hover {
     box-shadow: 0 1px 8px 5px #dddfe2;
     text-decoration: none; }
@@ -1317,7 +1318,7 @@ input:focus {
     border-bottom-right-radius: 8px;
     background: #fff;
     color: #4b4f56;
-    font-size: 18px; }
+    font-size: 16px; }
   .box-img-login.add-acc span {
     color: #1877f2; }
 

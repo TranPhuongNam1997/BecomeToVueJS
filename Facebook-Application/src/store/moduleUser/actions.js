@@ -56,7 +56,7 @@ export default{
                     email : data.email,
                     password: data.password,
                     nameimg: result.data.user.profilepicture,
-                    nameUser: result.data.user.fullname
+                    nameUser: result.data.user.fullname 
                 }
 
                 commit('HACK_USER',datahack)
