@@ -9,12 +9,14 @@ export default {
         if(checkToken){
             return true
         } 
-
         else{
             return false
         } 
     }, 
     currentUser : state => {
         return state.currentUser
-    }
+    },
+    // gettersHackUser : state =>{
+    //     return state.hackUser
+    // }
 }

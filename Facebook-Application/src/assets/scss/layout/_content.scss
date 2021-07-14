@@ -2,21 +2,115 @@
 // Layout :: Content
 // ======================================================
 .container-login{
-  max-width: 396px;
+  // max-width: 396px;
+  max-width: 980px;
   width: 100%;
   margin: 0 auto;
 
 }
 .logo-login{
   width: 198px;
+  margin-left: -19px;
+}
+.flex-login-left {
+  margin-top: 20vh;
 }
 .bg-white{
+  margin-top: 28vh;
+  max-width: 396px;
+  width: 100%;
   align-items: center;
   background-color: #fff;
   border: none;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0 ,0, 0, 0.1), 0 8px 16px rgba(0, 0, 0 ,0.1);
   padding: 20px 20px 28px;
+}
+.txt-clickimg{
+  color: #606770;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+.box-img-login{
+  cursor: pointer;
+  width: 160px;
+  display: inline-block;
+  margin-right: 15px;
+  box-shadow: 0 0 0 1px #dddfe2;
+  transition: all .2s ease-out;
+  -webkit-user-select: none;
+  border-radius: 8px;
+  &:hover{
+    box-shadow: 0 1px 8px 5px #dddfe2;
+    text-decoration: none;
+    span{
+      color: #4b4f56;
+    }
+  }
+  span{
+    display: block;
+    padding: 12px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: #fff;
+    color: #4b4f56;
+    font-size: 18px;
+
+  }
+  &.add-acc{
+    span{
+      color: #1877f2;
+    }
+  }
+
+}
+.box-img-block{
+  
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    background-image: url('../../../dist/img/NqXxvQhN4tE.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 42px;
+    width: 42px;
+  }
+  &:before{
+
+    content: '';
+    @include resize-before(100%)
+  }
+  img{
+    @include resize-img;
+    object-fit: cover;
+    height: 100%;
+    
+  }
+}
+.txt-ifnosugges{
+  font-size: 28px;
+}
+.logo-ifnosugges{
+  .logo-login{
+    width: 301px;
+    margin-bottom: -10px;
+    margin-left: -29px;
+  }
+}
+.txt-loginnear{
+  font-size: 28px;
 }
 .field-ip{
   padding: 6px 0;
@@ -132,7 +226,9 @@
   }
 }
 .flex-login{
-  padding-top: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .showhide-pass{
   position: absolute;

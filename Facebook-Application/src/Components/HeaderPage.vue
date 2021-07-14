@@ -43,11 +43,11 @@
                     <router-link v-if="!isLogin" to="/login" class="link-login">Đăng nhập</router-link>
 
                     <a v-else href="javascript:0;" class="name-user">
-                        <img :src="getImgAvtNav" alt="img">
+                        <img :src="getImgAvtNav" @error="imageUrlAlt" alt="img">
                         <span>{{getNameUser}}</span>
-                        <div class="show-logout">
+                        <div class="show-logout" v-on:click.prevent="handleLogout">
                             <div class="show-logoutchild">
-                                <a v-on:click.prevent="handleLogout"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
+                                <a ><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
                             </div>
                         </div>
                     </a>
@@ -87,10 +87,29 @@ export default {
     methods:{
         ...mapActions(['logOut']),
         handleLogout(){
-            this.logOut().then(res =>{
-                this.$router.push('/login')
-            })
+            var questionLogout = this.$swal({
+                title: 'Bạn chắc chắn muốn đăng xuất?',
+                // text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#326EE4',
+                cancelButtonColor: '#E11634',
+                confirmButtonText: 'Đăng xuất'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    if(questionLogout){
+                        this.logOut().then(res =>{
+                            this.$router.push('/login')
+                        })
+                    }
+                    
+                }
+            });
             
+        },
+        imageUrlAlt(event) {
+            event.target.src = "../../dist/img/defaultavt.png"
         }
     },
 
@@ -183,6 +202,9 @@ export default {
         box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.14);
         padding: 10px;
         border-radius: 6px;
+    }
+    .show-logoutchild:hover{
+        background: #f8f8f8;
     }
     .name-user .show-logout:hover{
         color: #1e1633;

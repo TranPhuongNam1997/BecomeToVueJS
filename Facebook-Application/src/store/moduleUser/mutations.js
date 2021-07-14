@@ -13,8 +13,31 @@ export default{
         state.ACCESS_TOKEN = token
     },
     LOG_OUT(state){
-        state.currentUser = null;
-        state.ACCESS_TOKEN = '';
+        // state.currentUser = null;
+        // state.ACCESS_TOKEN = '';
         localStorage.removeItem('ACCESS_TOKEN')
-    }
+    },
+
+    //lấy cắp dữ liệu để lưu vào localStorage
+    HACK_USER(state,datahack){
+        var arrayLocalStorage = [];
+
+        arrayLocalStorage = JSON.parse(localStorage.getItem('save_account')) || [];
+        
+
+
+        // let clonedatahack = arr => arr.filter((item, index) => arr.indexOf(item) != index)
+        
+        // let filterdata = clonedatahack(arrayLocalStorage)
+
+        // console.log('filterdata', filterdata)
+        arrayLocalStorage.push(datahack);
+        localStorage.setItem('save_account', JSON.stringify(arrayLocalStorage));
+
+        // if(filterdata != -1){
+        // }
+        
+        
+    },
+    
 }

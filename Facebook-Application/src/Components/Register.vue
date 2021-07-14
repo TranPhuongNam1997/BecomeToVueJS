@@ -11,7 +11,7 @@
                 <div class="body-register">
                     <form action="#">
                         <div class="field-register">
-                            <input type="text" placeholder="Họ tên">
+                            <input type="text" placeholder="Họ tên" autofocus>
                         </div>
                         <div class="field-register">
                             <input type="text" placeholder="Số di động hoặc email">

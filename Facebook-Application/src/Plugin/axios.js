@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://api-meme-zendvn-01.herokuapp.com/api',  // điền gì vào đấy nhỉ 
+    baseURL: 'https://api-meme-zendvn-01.herokuapp.com/api',
     
     headers: {'accept': 'application/json'}
   });

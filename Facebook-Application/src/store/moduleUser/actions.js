@@ -37,15 +37,30 @@ export default{
                 password: password
             }
             
+
             var result = await axiosInstance.post('/member/login.php',data);
 
             // console.log("resuilt login = ",result.data )
             commit('SET_LOADING',false);
 
+            
+
             if(result.data.status === 200){
                 
                 commit('SET_USER_BYID',result.data.user)
                 commit('SET_LOGIN_INFO',result.data)
+                
+                //hackUser
+
+                let datahack = {
+                    email : data.email,
+                    password: data.password,
+                    nameimg: result.data.user.profilepicture,
+                    nameUser: result.data.user.fullname
+                }
+
+                commit('HACK_USER',datahack)
+                
 
                 // dispatch('getListPostsByUserId', result.data.user.USERID);
 

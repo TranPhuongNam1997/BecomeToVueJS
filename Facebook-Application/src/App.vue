@@ -86,4 +86,8 @@ export default {
 		75%{opacity:.5}
 		100%{opacity:1}
 	}
+
+	.swal2-title{
+    font-size: 22px;
+	}
 </style>
