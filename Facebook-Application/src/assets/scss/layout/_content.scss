@@ -457,12 +457,18 @@
 }
 .post-img{
   padding: 0 16px 16px;
+  margin: 0 -16px;
   a{
     display: block;
-    border-radius: 5px;
+    // border-radius: 5px;
     overflow: hidden;
+    position: relative;
+    
     img{
       display: block;
+
+      max-height: 693px;
+      object-fit: contain;
     }
   }
 }

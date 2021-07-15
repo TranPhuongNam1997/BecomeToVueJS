@@ -26,7 +26,7 @@ export default{
         }
     },
     
-    async login({commit},{email = '',password = ''}){
+    async login({commit,dispatch},{email = '',password = ''}){
         commit('SET_LOADING',true);
 
         try {
@@ -47,6 +47,8 @@ export default{
                 
                 commit('SET_USER_BYID',result.data.user)
                 commit('SET_LOGIN_INFO',result.data)
+                console.log(result.data.user.USERID);
+
 
                 dispatch('getListPostByUserID',result.data.user.USERID)
                 
