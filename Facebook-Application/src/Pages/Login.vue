@@ -99,20 +99,20 @@ export default {
                 email : this.email,
                 password : this.password
             }
-            // if(!this.email){
-            //     this.listError.push('Email không được bỏ trống')
-            // }
-            // if(!this.password){
-            //     this.listError.push('Mật khẩu không được bỏ trống')
-            // }
-            // if(this.listError){
-            //     this.$notify({
-            //         group: 'foo',
-            //         type:  'error',
-            //         title: 'Thông báo từ Facebook Fake',
-            //         text: this.listError.join(' , '),
-            //     });
-            // }
+            if(!this.email){
+                this.listError.push('Email không được bỏ trống')
+            }
+            if(!this.password){
+                this.listError.push('Mật khẩu không được bỏ trống')
+            }
+            if(this.listError){
+                this.$notify({
+                    group: 'foo',
+                    type:  'error',
+                    title: 'Thông báo từ Facebook Fake',
+                    text: this.listError.join(' , '),
+                });
+            }
             
             // do bên action là function aysicn nên trả về 1 cái promise để chờ xử lý thì dùng cái response
             // chỉ xử lý trong trường hợp lỗi thôi
