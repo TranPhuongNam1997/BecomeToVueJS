@@ -10,16 +10,7 @@
 						</div>
 					</div>
 					<div class="col-lg-5">
-						<div class="box-post-right">
-							<div class="box-post-title">Bài viết gần đây của bạn.</div>
-							<div class="mt-2">
-								Vui lòng bấm
-								<router-link to="/login" class="link-post-login"
-									>Đăng nhập</router-link
-								>
-								để xem nội dung này
-							</div>
-						</div>
+						<side-bar/>
 					</div>
 				</div>
 			</div>
@@ -32,12 +23,14 @@ import HeaderPage from "../Components/HeaderPage.vue";
 import PostList from "../Components/PostList.vue";
 
 import { mapActions } from "vuex";
+import SideBar from '../Components/SideBar.vue';
 
 export default {
 	name: "home-page",
 	components: {
 		HeaderPage,
-		PostList
+		PostList,
+SideBar
 	},
 	data() {
 		return {};

@@ -7,6 +7,13 @@ export default{
         Vue.set(state.users , data.USERID , data);
         // console.log('state.users lúc sau = ',state.users);
     },
+
+    SET_LISTPOST_BYUSERID(state,{posts , userid}){
+        // tức là nó gộp lại vào posts của state posts{{userid,posts},{userid,posts}}
+        Vue.set(state.posts , userid , posts);
+
+    },
+
     SET_LOGIN_INFO(state, {user = null, token = ''}){
         localStorage.setItem('ACCESS_TOKEN',token)
         state.currentUser = user;
@@ -23,8 +30,6 @@ export default{
         var arrayLocalStorage = [];
 
         arrayLocalStorage = JSON.parse(localStorage.getItem('save_account')) || [];
-        
-
 
         // let clonedatahack = arr => arr.filter((item, index) => arr.indexOf(item) != index)
         
@@ -38,17 +43,13 @@ export default{
             //trả về điều kiện
             return item.email === datahack.email;
         });
-        console.log(index);
+        // console.log(index);
         if(index === -1){
             arrayLocalStorage.push(datahack);
             localStorage.setItem('save_account', JSON.stringify(arrayLocalStorage));
 
             
         }
-
-        // if(filterdata != -1){
-        // }
-        
         
     },
     

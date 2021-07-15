@@ -28,17 +28,17 @@ export default{
             
         } catch (error) {
             commit('SET_LOADING',false);
-            console.log('error = ',error)
+            // console.log('error = ',error)
         }
     },
     
     async getPostDetailByPostId({commit,dispatch},postId){
-        console.log('Khoi động getPostDetailByPostId')
+        // console.log('Khoi động getPostDetailByPostId')
 
         commit('SET_LOADING',true);
         try {
             var result = await axiosInstance.get('/post/post.php?postid=' + postId);
-            console.log("resuilt", result)
+            // console.log("resuilt", result)
 
 
             //nếu thành công
@@ -46,9 +46,9 @@ export default{
                 // console.log('result.data = ', result.data)
                 
                 //chạy qua action của user
-                console.log('Chạy vào action của user')
+                // console.log('Chạy vào action của user')
                 var UserResuilt = await dispatch('getUserById',result.data.data.post.USERID);
-                console.log('Da vao UserResuilt = ',UserResuilt)
+                // console.log('Da vao UserResuilt = ',UserResuilt)
 
                 commit('SET_LOADING',false);
 

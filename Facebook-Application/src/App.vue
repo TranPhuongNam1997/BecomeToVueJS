@@ -88,6 +88,6 @@ export default {
 	}
 
 	.swal2-title{
-    font-size: 22px;
+    	font-size: 22px;
 	}
 </style>

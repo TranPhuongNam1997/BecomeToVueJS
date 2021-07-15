@@ -12,7 +12,7 @@ export default{
             var user = rootState.user.users[userid];
 
 
-            console.log("user = ",user)
+            // console.log("user = ",user)
             var data = {
                 post:{
                     ...state.postDetail.post,
@@ -22,8 +22,8 @@ export default{
                 },
                 categories: state.postDetail.categories
             }
-            console.log("state.posdetail = ",state.postDetail)
-            console.log("data = ", data);
+            // console.log("state.posdetail = ",state.postDetail)
+            // console.log("data = ", data);
 
             return data;
 

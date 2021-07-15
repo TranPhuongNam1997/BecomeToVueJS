@@ -5,7 +5,7 @@ export default {
     isLogin : state => {
         let checkToken = parseJwt(state.ACCESS_TOKEN);
 
-        console.log('checkToken = ',checkToken)
+        // console.log('checkToken = ',checkToken)
         if(checkToken){
             return true
         } 
@@ -19,4 +19,15 @@ export default {
     // gettersHackUser : state =>{
     //     return state.hackUser
     // }
+    getListPostOfCurrentUser: state =>{
+        if(state.currentUser){
+            let userIdCurrenUser = state.currentUser.USERID
+            console.log(state.posts[userIdCurrenUser])
+            return state.posts[userIdCurrenUser]
+            
+        }
+        
+        return null
+        // return state.posts
+    }
 }

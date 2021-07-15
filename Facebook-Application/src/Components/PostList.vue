@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 import { PAGE_SIZE, CURREN_PAGE } from '../Constant'
 import { mapGetters , mapActions } from 'vuex'
 import PostListItem from './PostListItem.vue'
@@ -54,6 +55,20 @@ export default {
     computed:{
         ...mapGetters(['getterGetList'])
     },
+    mounted(){
+        $(function(){ //on document ready
+            $(document).scroll(function (e) { //bind scroll event
+
+                var intBottomMargin = 300; //Pixels from bottom when script should trigger
+
+                //if less than intBottomMargin px from bottom
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() - intBottomMargin) {
+                    $(".view-more").click(); //trigger click
+                }
+
+            });
+        });
+    }
     
 }
 </script>
