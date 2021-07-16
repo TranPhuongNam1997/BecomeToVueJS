@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="box-post-right">
+                    <!-- <div class="box-post-right">
                         <div class="box-post-title">Bài viết gần đây.</div>
                     </div>
                     <div class="post-item">
@@ -50,7 +50,8 @@
                             </a>
                         </div>
 
-                    </div>
+                    </div> -->
+                    <side-bar/>
                 </div>
             </div>
         </div>
@@ -64,9 +65,11 @@ import PostComment from '../Components/PostComment.vue'
 import YourComment from '../Components/PostComment.vue'
 import PostListItem from '../Components/PostListItem.vue'
 import SortComment from '../Components/SortComment.vue'
+import SideBar from '../Components/SideBar.vue';
+
 
 export default {
-  components: { SortComment, PostComment,YourComment, PostListItem },
+  components: { SortComment, PostComment,YourComment, PostListItem,SideBar },
     name:'post-detail-page',
     data(){
         return{
