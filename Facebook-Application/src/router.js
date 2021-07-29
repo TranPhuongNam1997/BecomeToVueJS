@@ -10,7 +10,7 @@ import PostDetail     from './Pages/PostDetail'
 import PostPage       from './Pages/PostPage'
 import NotFound       from './Pages/NotFound'
 import Register       from './Components/Register'
-
+import { authenticated , notauthenticated } from './Plugin/authenticator'
 
 Vue.use(VueRouter)
 
@@ -19,25 +19,29 @@ const routes = [
     { 
         path: '/', 
         name: 'home-page',
-        component: HomePage 
+        component: HomePage,
+        
     },
     // trang đăng nhập
     { 
         path: '/login', 
         name: 'login',
-        component: Login 
+        component: Login,
+        beforeEnter: notauthenticated,
     },
     // trang đăng ký
     { 
-        path: '/', 
+        path: '/register', 
         name: 'register',
-        component: Register 
+        component: Register,
+        beforeEnter: notauthenticated,
     },
     // trang cá nhân
     { 
         path: '/personal/:id', 
         name: 'personal',
-        component: PersonalPage 
+        component: PersonalPage,
+        beforeEnter: authenticated,
     },
     // trang thay đổi mật khẩu
     { 
@@ -55,13 +59,18 @@ const routes = [
     { 
         path: '/post-detail/:id', 
         name: 'post-detail',
-        component: PostDetail 
+        component: PostDetail,
+        beforeEnter: authenticated,
+
+        
     },
     // trang đăng bài
     { 
         path: '/post-page', 
         name: 'post-page',
-        component: PostPage 
+        component: PostPage,
+        beforeEnter: authenticated,
+
     },
     // trang 404
     {

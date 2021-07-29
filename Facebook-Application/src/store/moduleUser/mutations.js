@@ -2,10 +2,10 @@ import  Vue from 'vue';
 
 export default{
     SET_USER_BYID(state,data){
-        // console.log('mu SET_USER_BYID data = ',data);
+        console.log('mutations SET_USER_BYID data = ',data);
         // console.log('state.users lúc này = ',state.users);
         Vue.set(state.users , data.USERID , data);
-        // console.log('state.users lúc sau = ',state.users);
+        console.log('state.users lúc sau = ',state.users);
     },
 
     SET_LISTPOST_BYUSERID(state,{posts , userid}){
@@ -15,14 +15,17 @@ export default{
     },
 
     SET_LOGIN_INFO(state, {user = null, token = ''}){
+        //lưu để giữ trạng thái đăng nhập
         localStorage.setItem('ACCESS_TOKEN',token)
+
         state.currentUser = user;
         state.ACCESS_TOKEN = token
     },
     LOG_OUT(state){
-        // state.currentUser = null;
-        // state.ACCESS_TOKEN = '';
+        state.currentUser = null;
+        state.ACCESS_TOKEN = '';
         localStorage.removeItem('ACCESS_TOKEN')
+        
     },
 
     //lấy cắp dữ liệu để lưu vào localStorage

@@ -1,7 +1,9 @@
 const PAGE_SIZE = 3
 const CURREN_PAGE = 1
+// const CONFIG_ACCESS_TOKEN = 'ACCESS_TOKEN'
 
 export {
     PAGE_SIZE,
-    CURREN_PAGE
+    CURREN_PAGE,
+    // CONFIG_ACCESS_TOKEN
 }

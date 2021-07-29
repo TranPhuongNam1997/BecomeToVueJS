@@ -83,7 +83,7 @@ export default {
         getNameUser(){
             return this.currentUser.fullname
         }
-    },
+    },  
     methods:{
         ...mapActions(['logOut']),
         handleLogout(){

@@ -30,7 +30,7 @@ export default {
 	components: {
 		HeaderPage,
 		PostList,
-SideBar
+		SideBar
 	},
 	data() {
 		return {};

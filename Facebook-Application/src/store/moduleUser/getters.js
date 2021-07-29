@@ -2,6 +2,7 @@
 import { parseJwt }  from '../../Helper'
 
 export default {
+    //check xem có token hay không nếu có thì trả về true
     isLogin : state => {
         let checkToken = parseJwt(state.ACCESS_TOKEN);
 
@@ -22,7 +23,6 @@ export default {
     getListPostOfCurrentUser: state =>{
         if(state.currentUser){
             let userIdCurrenUser = state.currentUser.USERID
-            console.log(state.posts[userIdCurrenUser])
             return state.posts[userIdCurrenUser]
             
         }

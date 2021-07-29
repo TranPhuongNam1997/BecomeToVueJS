@@ -34,7 +34,7 @@ export default {
     },
     computed:{
         getTextNav(){
-            
+            //truy cập vào state -> module post -> categories
             return this.$store.state.post.categories;
         }
     }

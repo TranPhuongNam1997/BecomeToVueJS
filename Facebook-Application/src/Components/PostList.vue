@@ -63,7 +63,7 @@ export default {
 
                 //if less than intBottomMargin px from bottom
                 if ($(window).scrollTop() >= $(document).height() - $(window).height() - intBottomMargin) {
-                    $(".view-more").click(); //trigger click
+                    $('.view-more').click();
                 }
 
             });

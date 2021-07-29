@@ -13,6 +13,7 @@ export default{
             }
             // nếu null || NaN || undefind || 0 đều trả về là false
             if(tagIndex){
+                //nếu tagIndex có giá trị thì sẽ add thêm phần tuwrw tagIndex vào object params
                 thamso.params.tagIndex = tagIndex
                 var result = await axiosInstance.get('/post/getListByCategory.php',thamso);
             }
