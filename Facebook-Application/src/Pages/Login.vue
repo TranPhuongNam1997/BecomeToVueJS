@@ -20,7 +20,7 @@
                     </a>
                     
                     
-                    <a href="#" class="box-img-login add-acc">
+                    <a href="javascript:0;" @click="addacc" class="box-img-login add-acc">
                         <div class="box-img-block">
                             <i></i>
                         </div>
@@ -39,7 +39,7 @@
                 <form action="#" v-on:submit.prevent="handleSubmitLogin">
                     <div class="form-login">
                         <div class="field-ip">
-                            <input v-model="email" autofocus type="text" placeholder="Email hoặc số điện thoại">
+                            <input v-model="email" autofocus ref="enteremail" type="text" placeholder="Email hoặc số điện thoại">
                         </div>
                         <div class="field-ip">
                             <input v-model="password" id="password-login" type="password" placeholder="Mật khẩu" autocomplete="on">
@@ -64,6 +64,7 @@
             </div>
         </div>
         <register/>
+        <notifications group="foo" position="right bottom" />
     </div>
 </template>
 
@@ -74,6 +75,7 @@ import Vue from 'vue'
 import { mapActions,mapGetters } from 'vuex'
 import Notifications from 'vue-notification'
 Vue.use(Notifications)
+
 
 import $ from "jquery";
 import Register from '../Components/Register.vue'
@@ -90,7 +92,9 @@ export default {
         }
     },
     methods:{
-        
+        addacc(){
+            this.$refs.enteremail.focus()
+        },
         
         ...mapActions(['login']),
 
@@ -99,20 +103,20 @@ export default {
                 email : this.email,
                 password : this.password
             }
-            if(!this.email){
-                this.listError.push('Email không được bỏ trống')
-            }
-            if(!this.password){
-                this.listError.push('Mật khẩu không được bỏ trống')
-            }
-            if(this.listError){
-                this.$notify({
-                    group: 'foo',
-                    type:  'error',
-                    title: 'Thông báo từ Facebook Fake',
-                    text: this.listError.join(' , '),
-                });
-            }
+            // if(!this.email){
+            //     this.listError.push('Email không được bỏ trống')
+            // }
+            // if(!this.password){
+            //     this.listError.push('Mật khẩu không được bỏ trống')
+            // }
+            // if(this.listError){
+            //     this.$notify({
+            //         group: 'foo',
+            //         type:  'error',
+            //         title: 'Thông báo từ Facebook Fake',
+            //         text: this.listError.join(' , '),
+            //     });
+            // }
             
             // do bên action là function aysicn nên trả về 1 cái promise để chờ xử lý thì dùng cái response
             // chỉ xử lý trong trường hợp lỗi thôi

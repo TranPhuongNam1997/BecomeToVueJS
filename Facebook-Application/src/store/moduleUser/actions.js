@@ -73,14 +73,14 @@ export default{
             }
             return {
                 ok: false,
-                error: error.message
+                error: result.data.error
             }
 
         } catch (error) {
             commit('SET_LOADING',false);
             return{
                 ok: false,
-                error: error.message
+                error: result.data.error
             }
         }
     },
@@ -195,6 +195,64 @@ export default{
                 error: null
             }
         }
-    }
+    },
+
+    //action đăng ký
+
+    async register({commit,dispatch},{email = '',fullname = '',password = '',repassword = '',}){
+        commit('SET_LOADING',true);
+
+        try {
+
+            let data = {
+                email : email,
+                fullname: fullname,
+                password: password,
+                repassword: repassword
+
+            }
+
+            var result = await axiosInstance.post('/member/register.php',data);
+
+            // console.log("resuilt login = ",result.data )
+            commit('SET_LOADING',false);
+
+            
+
+            if(result.data.status === 200){
+                
+                commit('SET_USER_BYID',result.data.user)
+                commit('SET_LOGIN_INFO',result.data)
+
+                // console.log(result.data.user.USERID);
+
+
+                dispatch('getListPostByUserID',result.data.user.USERID)
+                
+                console.log('result.data - register = ',result.data.error)
+
+                return{
+                    ok: true,
+                    data: result.data,
+                    error: null
+                }
+            }
+            console.log('result.data - register = ',result.data.error)
+            return {
+                ok: false,
+                error: result.data.error,
+            }
+            
+
+
+        } catch (error) {
+            commit('SET_LOADING',false);
+            console.log('result.data - register = ',result.data.error)
+            return{
+                ok: false,
+                error: result.data.error
+            }
+        }
+    },
 
 }
