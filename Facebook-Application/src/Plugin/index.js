@@ -15,5 +15,6 @@ import './jquery';
 import './bootstrap4'
 import './popper'
 import './sweetalert2'
+import './masonry'
 
 // Vue.loadScript("./assets/js/script.js")

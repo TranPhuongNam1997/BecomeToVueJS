@@ -46,6 +46,9 @@ export default {
 </script>
 
 <style>
+	html,body{
+		scroll-behavior: smooth;
+	}
 	.loading-progressbar{
 		animation-name: e5hlw9lw-B;
 		animation-duration: 0.5s;

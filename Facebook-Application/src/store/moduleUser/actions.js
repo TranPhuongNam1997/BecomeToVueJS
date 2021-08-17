@@ -47,7 +47,7 @@ export default{
                 
                 commit('SET_USER_BYID',result.data.user)
                 commit('SET_LOGIN_INFO',result.data)
-                console.log(result.data.user.USERID);
+                console.log('SET_LOGIN_INFO result.data = ',result.data);
 
 
                 dispatch('getListPostByUserID',result.data.user.USERID)
@@ -85,58 +85,7 @@ export default{
         }
     },
 
-    async checkLogin({commit,dispatch}){
-        try{
-            let tokenLocal = localStorage.getItem('ACCESS_TOKEN');
-
-            let tokenAfterConvert = parseJwt(tokenLocal);
-            console.log(tokenAfterConvert)
-            
-            if(tokenAfterConvert){
-                // nó cũng là 1 cái promise nên sẽ có async await
-
-                //lucs này api sẽ chạy theo lần lượt trên xuống dưới
-                //ví dụ resuiltUser chạy hết 3s
-                // resuiltPostUserID chạy hết 4s  tổng hết 7s
-                //tuy nhiên 2 cái API này không liên quan đến nhau nên là chúng ta áp dụng cho 2 cái API chạy cùng 1 lúc luôn 
-                //sử dụng kiến thức mới promiseAll
-
-
-                let APIresuiltUser       =  dispatch('getUserById',tokenAfterConvert.id)
-
-                let APIresuiltPostUserID =  dispatch('getListPostByUserID',tokenAfterConvert.id)
-
-                let [resuiltUser , resuiltPostUserID] = await Promise.all([APIresuiltUser, APIresuiltPostUserID])
-
-
-                if(resuiltUser.ok  && resuiltPostUserID.ok){
-                    let data = {
-                        user : resuiltUser.data,
-                        token: tokenLocal
-                    }
-                    commit('SET_LOGIN_INFO',data);
-                    return{
-                        ok: true,
-                        error:null
-                    }
-                }
-                
-            }
-            return{
-                ok: false,
-                error: error.message
-            }
-
-
-
-        } catch (error) {
-            return{
-                ok: false,
-                error: error.message
-            }
-        }
-
-    },
+    
     
     //bất đồng bộ đăng xuất
 
@@ -165,7 +114,7 @@ export default{
 
             let result = await axiosInstance.get('/post/getListPostUserID.php', config);
             
-            console.log('resuilt getListPostByUserID = ',result)
+            // console.log('resuilt getListPostByUserID = ',result)
 
 
 
@@ -181,6 +130,7 @@ export default{
 
                 return{
                     ok: true,
+                    data: result.data,
                     error: null
                 }
             }
@@ -195,6 +145,62 @@ export default{
                 error: null
             }
         }
+    },
+
+
+    async checkLogin({commit,dispatch}){
+        try{
+            let tokenLocal = localStorage.getItem('ACCESS_TOKEN');
+
+            let tokenAfterConvert = parseJwt(tokenLocal);
+            // console.log(tokenAfterConvert)
+            
+            if(tokenAfterConvert){
+                // nó cũng là 1 cái promise nên sẽ có async await
+
+                //lucs này api sẽ chạy theo lần lượt trên xuống dưới
+                //ví dụ resuiltUser chạy hết 3s
+                // resuiltPostUserID chạy hết 4s  tổng hết 7s
+                //tuy nhiên 2 cái API này không liên quan đến nhau nên là chúng ta áp dụng cho 2 cái API chạy cùng 1 lúc luôn 
+                //sử dụng kiến thức mới promiseAll
+
+
+                let APIresuiltUser       =  dispatch('getUserById',tokenAfterConvert.id)
+
+                let APIresuiltPostUserID =  dispatch('getListPostByUserID',tokenAfterConvert.id)
+
+                let [resuiltUser , resuiltPostUserID] = await Promise.all([APIresuiltUser, APIresuiltPostUserID])
+
+
+                if(resuiltUser.ok  && resuiltPostUserID.ok){
+                    // console.log('aaa',resuiltUser.data)
+                    let data = {
+                        user : resuiltUser.data,
+                        token: tokenLocal
+                    }
+                    commit('SET_LOGIN_INFO',data);
+                    return{
+                        ok: true,
+                        
+                        error:null
+                    }
+                }
+                
+            }
+            return{
+                ok: false,
+                error: error.message
+            }
+
+
+
+        } catch (error) {
+            return{
+                ok: false,
+                error: error.message
+            }
+        }
+
     },
 
     //action đăng ký
@@ -229,7 +235,7 @@ export default{
 
                 dispatch('getListPostByUserID',result.data.user.USERID)
                 
-                console.log('result.data - register = ',result.data.error)
+                // console.log('result.data - register = ',result.data.error)
 
                 return{
                     ok: true,
@@ -237,7 +243,7 @@ export default{
                     error: null
                 }
             }
-            console.log('result.data - register = ',result.data.error)
+            // console.log('result.data - register = ',result.data.error)
             return {
                 ok: false,
                 error: result.data.error,
@@ -247,7 +253,7 @@ export default{
 
         } catch (error) {
             commit('SET_LOADING',false);
-            console.log('result.data - register = ',result.data.error)
+            // console.log('result.data - register = ',result.data.error)
             return{
                 ok: false,
                 error: result.data.error

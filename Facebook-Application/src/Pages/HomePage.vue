@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import HeaderPage from "../Components/HeaderPage.vue";
 import PostList from "../Components/PostList.vue";
 
 import { mapActions } from "vuex";
@@ -28,7 +27,6 @@ import SideBar from '../Components/SideBar.vue';
 export default {
 	name: "home-page",
 	components: {
-		HeaderPage,
 		PostList,
 		SideBar
 	},

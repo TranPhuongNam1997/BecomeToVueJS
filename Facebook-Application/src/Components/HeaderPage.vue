@@ -42,7 +42,7 @@
                     <!-- if not login -->
                     <router-link v-if="!isLogin" to="/login" class="link-login">Đăng nhập</router-link>
 
-                    <a v-else href="javascript:0;" class="name-user">
+                    <a v-else-if="currentUser" href="javascript:0;" class="name-user">
                         <img :src="getImgAvtNav" @error="imageUrlAlt" alt="img">
                         <span>{{getNameUser}}</span>
                         <div class="show-logout" v-on:click.prevent="handleLogout">
@@ -63,7 +63,7 @@
 
 
 <script>
-import { mapGetters,mapActions } from 'vuex'
+import { mapGetters , mapActions } from 'vuex'
 import $ from "jquery";
 import NavigationPage from './NavigationPage.vue'
 
@@ -75,13 +75,21 @@ export default {
             
         }
     },
+    
     computed:{
         ...mapGetters(['isLogin','currentUser']),
         getImgAvtNav(){
-            return this.currentUser.profilepicture
+            if(this.currentUser.profilepicture){
+                return this.currentUser.profilepicture
+            } 
+            else{
+                return '../../dist/img/defaultavt.png'
+
+            }
         },
         getNameUser(){
-            return this.currentUser.fullname
+            if(this.currentUser.fullname) return this.currentUser.fullname
+            return ''
         }
     },  
     methods:{

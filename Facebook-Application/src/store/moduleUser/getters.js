@@ -15,6 +15,7 @@ export default {
         } 
     }, 
     currentUser : state => {
+        // console.log('state.currentUser = ',state.currentUser)   
         return state.currentUser
     },
     // gettersHackUser : state =>{
