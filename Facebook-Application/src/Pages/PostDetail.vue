@@ -10,7 +10,8 @@
 
                             <sort-comment/>
 
-                            <your-comment/>
+                            <!-- <your-comment/> -->
+                            <your-comment v-bind:postcmt="getPostDetail.post" />
 
                             <post-comment/>
 
@@ -31,10 +32,11 @@
 
 import {mapActions,mapGetters} from 'vuex'
 import PostComment from '../Components/PostComment.vue'
-import YourComment from '../Components/PostComment.vue'
+// import YourComment from '../Components/PostComment.vue'
 import PostListItem from '../Components/PostListItem.vue'
 import SortComment from '../Components/SortComment.vue'
 import SideBar from '../Components/SideBar.vue';
+import YourComment from '../Components/YourComment.vue'
 
 
 export default {

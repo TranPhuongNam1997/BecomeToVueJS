@@ -21,6 +21,7 @@ const store = new Vuex.Store({
             state.isloading = loading;
         }
     },
+    
     modules:{
         post,
         user,

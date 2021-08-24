@@ -2,7 +2,8 @@
     <div class="your-cmt">
         <a href="#" class="avt-yourcmt">
             <img
-                    src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
+                    :src="postcmt.profilepicture"
+                    @error="imageUrlAlt"
                     alt="img">
         </a>
         <div class="field-yourcmt">
@@ -20,12 +21,38 @@
 </template>
 
 <script>
+import $ from "jquery";
 export default {
     name: 'your-cmt',
     data(){
         return{
 
         }
+    },
+    props:{
+        postcmt:{
+            type: Object,
+            
+        }
+    },
+    methods:{
+        imageUrlAlt(event) {
+            event.target.src = "../../dist/img/defaultavt.png"
+        }
+    },
+    mounted(){
+        $('#text-cmt').keyup(function (e) {
+
+        if(e.target.value && e.target.value.length > 0){
+                $('.fly-cmt svg path').attr('fill','#4782FD');
+        }
+        else {
+            $('.fly-cmt svg path').attr('fill','#616770');
+            // alert('a')
+
+        }
+
+        });
     }
 }
 </script>

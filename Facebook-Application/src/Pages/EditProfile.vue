@@ -5,39 +5,52 @@
                 <div class="col-lg-6">
                     <div class="post-upload mb-5">
                         <h3 class="title-post">Chỉnh sửa Trang cá nhân</h3>
-                        <div class="post-upload-box">
+                        <form class="post-upload-box" v-if="this.currentUser" @submit.prevent="handleSubmitEdit">
                             <div class="font-weight-bold">Ảnh đại diện</div>
                             <div class="avatar-upload">
                                 <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                                    <input v-on:change="ipChangeImage" type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <div id="imagePreview"
-                                         style="background-image: url('https://scontent.fhan5-2.fna.fbcdn.net/v/t1.6435-9/109116642_278706606677722_7309285219947855714_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=dV2by5ahqQQAX_cZsWB&_nc_ht=scontent.fhan5-2.fna&oh=15fafd432a1a375010a9447b460b316d&oe=60DFB4DC');">
+                                    <div 
+                                        id="imagePreview"
+                                        :style="{ backgroundImage: 'url(' + avtBaseUrl + ')' }">
                                     </div>
                                 </div>
                             </div>
                             <div class="field-ip">
-                                <input type="text" placeholder="Họ tên...">
+                                <input
+                                    type="text" 
+                                    placeholder="Họ tên..."
+                                    v-bind:value="this.currentUser.fullname"
+                                    v-on:input="nameUser = $event.target.value"
+                                >
                             </div>
                             <div class="field-ip">
-                                <select required>
+                                <select
+                                    v-bind:value="currentUser.gender"
+                                    v-on:change="genderUser = $event.target.value"
+                                >
                                     <option disabled value="" selected>Giới tính</option>
-                                    <option value="1">Nam</option>
-                                    <option value="2">Nữ</option>
-                                    <option value="3">Khác</option>
+                                    <option value="nam">Nam</option>
+                                    <option value="nữ">Nữ</option>
+                                    <option value="Khác">Khác</option>
                                 </select>
                             </div>
 
                             <div class="field-ip">
-                                <textarea placeholder="Tiểu sử ngắn"></textarea>
+                                <textarea 
+                                    placeholder="Tiểu sử ngắn"
+                                    v-bind:value="this.currentUser.description"
+                                    v-on:input="storyUser = $event.target.value"
+                                ></textarea>
                             </div>
 
                             <div class="text-center mt-3 mb-3">
-                                <button class="btn-lightblue">Chỉnh sửa thông tin giới thiệu</button>
+                                <button class="btn-lightblue" type="submit">Chỉnh sửa thông tin giới thiệu</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -49,13 +62,104 @@
 </template>
 
 <script>
+import $ from "jquery";
+
+import { mapGetters } from 'vuex'
 
 export default {
     name:'edit-profile-page',
     data(){
         return{
-            
+            userid: this.$route.params.id,
+            avtImage:{
+                //tên ảnh
+                nameImage: null,
+                
+                //ảnh hiển thị trên local
+                linkBase64Url: ''
+            },
+            nameUser: '',
+            genderUser: '',
+            storyUser: '',
+
         }
+    },
+    computed:{
+        ...mapGetters(['currentUser']),
+        avtBaseUrl(){
+            if(this.avtImage.linkBase64Url == '' && this.currentUser){
+                return this.currentUser.profilepicture
+            }
+            else return this.avtImage.linkBase64Url
+        }
+    },
+    watch: {
+        '$route' (to, from) {
+            this.userid = to.params.id;
+            this.checkIsCurrentUser();
+        }
+    },
+    created(){
+        this.checkIsCurrentUser()
+    },
+    
+    
+    methods:{
+        handleSubmitEdit(){
+            console.log('Đã vào handleSubmitEdit');
+            console.log('Đã vào handleSubmitEdit',this.nameUser);
+            console.log('Đã vào handleSubmitEdit',this.genderUser);
+            console.log('Đã vào handleSubmitEdit',this.storyUser);
+            
+        },
+        checkIsCurrentUser() {
+            
+            if(this.userid && this.currentUser) {
+                if(this.userid !== this.currentUser.USERID) {
+                    this.$router.push('/');
+                }
+            }
+        },
+        ipChangeImage(event){
+
+            if(event.target.files && event.target.files.length){
+
+                let ipFileValue = event.target.files[0];
+                let vueI = this;
+                let reader = new FileReader();
+
+                reader.addEventListener("load", function () {
+                    // convert image file to base64 string
+                    let preview = reader.result;
+
+                    vueI.avtImage.linkBase64Url = preview;
+
+                    //truyền tên vào nameImage
+                    vueI.avtImage.nameImage = ipFileValue;
+
+                }, false);
+
+                if (ipFileValue) {
+                    reader.readAsDataURL(ipFileValue);
+                }
+            }
+
+        }
+    },
+    
+    mounted(){
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
+        //         reader.onload = function(e) {
+        //             $('#imagePreview').css('background-image', 'url('+e.target.result +')').hide().fadeIn(650);
+        //         };
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
+        // $("#imageUpload").change(function() {
+        //     readURL(this);
+        // });
     }
 }
 </script>

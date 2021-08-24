@@ -17,7 +17,7 @@ Vue.use(VueRouter)
 const routes = [
     // trang trang chủ
     { 
-        path: '/', 
+        path: '/',
         name: 'home-page',
         component: HomePage,
         
@@ -45,15 +45,17 @@ const routes = [
     },
     // trang thay đổi mật khẩu
     { 
-        path: '/personal/:id/change-password', 
+        path: '/personal/:id/change-password',
         name: 'change-password',
-        component: ChangePassword 
+        component: ChangePassword ,
+        beforeEnter: authenticated,
     },
     // trang chỉnh sửa trang cá nhân
     { 
         path: '/personal/:id/edit-profile', 
         name: 'edit-prifile',
-        component: EditProfile 
+        component: EditProfile,
+        beforeEnter: authenticated,
     },
     // trang chi tiết bài viết
     { 

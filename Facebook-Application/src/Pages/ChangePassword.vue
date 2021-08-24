@@ -1,10 +1,10 @@
 <template>
     <div class="container-login">
-        <div class="flex-login">
+        <div class="flex-login flex-column justify-content-center h-100vh">
             <div class="text-center">
                 <img class="logo-login" src="../../dist/img/logo.svg" alt="img">
             </div>
-            <div class="bg-white">
+            <div class="bg-white mt-2">
                 <h1 class="heading-title">Đổi mật khẩu</h1>
                 <form action="">
                     <div class="form-login">
@@ -36,5 +36,7 @@ export default {
 </script>
 
 <style>
-    
+    .h-100vh{
+        height: 100vh;
+    }
 </style>

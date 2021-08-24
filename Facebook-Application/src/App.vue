@@ -12,9 +12,6 @@
 </template>
 
 <script>
-// import $ from "jquery";
-// import './assets/js/script.js'
-
 
 import { mapState, mapActions } from 'vuex'
 import HeaderPage from './Components/HeaderPage.vue'

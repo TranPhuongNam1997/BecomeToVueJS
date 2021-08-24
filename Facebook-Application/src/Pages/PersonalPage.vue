@@ -36,7 +36,7 @@
                 <div
 
                     v-masonry-tile 
-                    class="col-lg-6"
+                    class="col-lg-6 cs-persionalimg"
                     v-for="item in ListPostOfUser"
                     :key="item.PID"
                 >
@@ -123,5 +123,8 @@ export default {
 </script>
 
 <style>
-
+    .cs-persionalimg .post-img a img{
+        min-height: 500px;
+        object-fit: cover;
+    }
 </style>

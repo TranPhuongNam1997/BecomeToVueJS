@@ -42,7 +42,7 @@
                     <!-- if not login -->
                     <router-link v-if="!isLogin" to="/login" class="link-login">Đăng nhập</router-link>
 
-                    <a v-else-if="currentUser" href="javascript:0;" class="name-user">
+                    <router-link :to="{name: 'personal',params:{id: currentUser.USERID}}" v-else-if="currentUser" class="name-user">
                         <img :src="getImgAvtNav" @error="imageUrlAlt" alt="img">
                         <span>{{getNameUser}}</span>
                         <div class="show-logout" v-on:click.prevent="handleLogout">
@@ -50,7 +50,7 @@
                                 <a ><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
                             </div>
                         </div>
-                    </a>
+                    </router-link>
 
                 </div>
             </div>
@@ -72,10 +72,9 @@ export default {
     name: 'header-comp',
     data(){
         return{
-            
+            //khai báo biến cục bộ 
         }
     },
-    
     computed:{
         ...mapGetters(['isLogin','currentUser']),
         getImgAvtNav(){
@@ -146,13 +145,13 @@ export default {
 				}
 			});
         })
-
 	}
     
 }
 </script>
 
 <style scoped>
+    /* có thể dùng scss  */
     .name-user{
         display: flex;
         align-items: center;

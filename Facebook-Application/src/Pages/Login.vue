@@ -14,7 +14,7 @@
                     <!-- hackuser -->
                     <a v-for="(item,index) in arrayLocalAccount" :key="index"  @click.prevent="handleSigninCache(item)" class="box-img-login">
                         <div class="box-img-block">
-                            <img :src="item.nameimg" alt="img">
+                            <img :src="item.nameimg" @error="imageUrlAlt" alt="img">
                         </div>
                         <span>{{item.nameUser}}</span>
                     </a>
@@ -92,6 +92,9 @@ export default {
         }
     },
     methods:{
+        imageUrlAlt(event) {
+            event.target.src = "../../dist/img/defaultavt.png"
+        },
         addacc(){
             this.$refs.enteremail.focus()
         },

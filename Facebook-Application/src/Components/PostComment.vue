@@ -6,7 +6,7 @@
                     <button class="reply-cmt"><i class="fa fa-reply"></i></button>
                     <a href="#" class="avtbox-cmt-parent">
                         <img
-                                src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
+                                src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.6435-9/93477181_1565369950285844_3687181551910518784_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LvJx8tZLQHAAX_6JoFK&_nc_ht=scontent.fhan2-1.fna&oh=ce44318e5ca9821a3436283c4ff1150b&oe=61431C94"
                                 alt="img">
                     </a>
                     <div class="txt-cmt">
@@ -20,7 +20,7 @@
                         <div class="box-cmt-child">
                             <a href="#" class="avtbox-cmt-child">
                                 <img
-                                    src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
+                                    src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.6435-9/93477181_1565369950285844_3687181551910518784_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LvJx8tZLQHAAX_6JoFK&_nc_ht=scontent.fhan2-1.fna&oh=ce44318e5ca9821a3436283c4ff1150b&oe=61431C94"
                                     alt="img">
                             </a>
                             <div class="txt-cmt">
@@ -34,7 +34,7 @@
                         <div class="box-cmt-child">
                             <a href="#" class="avtbox-cmt-child">
                                 <img
-                                    src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
+                                    src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.6435-9/93477181_1565369950285844_3687181551910518784_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LvJx8tZLQHAAX_6JoFK&_nc_ht=scontent.fhan2-1.fna&oh=ce44318e5ca9821a3436283c4ff1150b&oe=61431C94"
                                     alt="img">
                             </a>
                             <div class="txt-cmt">
@@ -53,7 +53,7 @@
                     <button class="reply-cmt"><i class="fa fa-reply"></i></button>
                     <a href="#" class="avtbox-cmt-parent">
                         <img
-                                src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
+                                src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.6435-9/93477181_1565369950285844_3687181551910518784_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LvJx8tZLQHAAX_6JoFK&_nc_ht=scontent.fhan2-1.fna&oh=ce44318e5ca9821a3436283c4ff1150b&oe=61431C94"
                                 alt="img">
                     </a>
                     <div class="txt-cmt">
@@ -67,7 +67,7 @@
                         <div class="box-cmt-child">
                             <a href="#" class="avtbox-cmt-child">
                                 <img
-                                    src="/public/avt-post.jpg?658c5f71be2fcf91377e4e817726c096"
+                                    src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.6435-9/93477181_1565369950285844_3687181551910518784_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LvJx8tZLQHAAX_6JoFK&_nc_ht=scontent.fhan2-1.fna&oh=ce44318e5ca9821a3436283c4ff1150b&oe=61431C94"
                                     alt="img">
                             </a>
                             <div class="txt-cmt">
