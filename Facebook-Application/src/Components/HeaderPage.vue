@@ -119,7 +119,7 @@ export default {
             event.target.src = "../../dist/img/defaultavt.png"
         }
     },
-
+    
 	mounted(){
         $(document).ready(function(){
             // begin click outside

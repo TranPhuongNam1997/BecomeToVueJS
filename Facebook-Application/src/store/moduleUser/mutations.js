@@ -58,5 +58,8 @@ export default{
         }
         
     },
+    SET_EDIT_PROFILE(state,user){
+        state.currentUser = user
+    }
     
 }

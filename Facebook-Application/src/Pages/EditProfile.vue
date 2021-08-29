@@ -64,7 +64,7 @@
 <script>
 import $ from "jquery";
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name:'edit-profile-page',
@@ -105,12 +105,53 @@ export default {
     
     
     methods:{
+        ...mapActions(['updateProfile']),
         handleSubmitEdit(){
             console.log('Đã vào handleSubmitEdit');
-            console.log('Đã vào handleSubmitEdit',this.nameUser);
-            console.log('Đã vào handleSubmitEdit',this.genderUser);
-            console.log('Đã vào handleSubmitEdit',this.storyUser);
+            // nếu không có giá trị thì khi console ra thì không thu được gì cả
+
+            if(!this.nameUser) this.nameUser = this.currentUser.fullname
+
+            if(!this.genderUser) this.genderUser = this.currentUser.gender
+
+            if(!this.storyUser) this.storyUser = this.currentUser.description
+
+            if(!this.avtImage.nameImage) this.avtImage.nameImage = this.currentUser.profilepicture
             
+
+
+            if(this.nameUser && this.genderUser && this.storyUser){
+                
+                let data = {
+                    fullname : this.nameUser,
+                    gender : this.genderUser,
+                    description : this.storyUser,
+                }
+                if(this.avtImage.nameImage){
+                    data.profilepicture = this.avtImage.nameImage;
+                }
+                console.log('data.profilepicture',data.profilepicture)
+                this.updateProfile(data).then(res =>{
+                    if(!res.ok){
+                        this.$notify({
+                            group: 'foo',
+                            type:  'error',
+                            title: 'Thông báo từ Facebook Fake',
+                            text: 'Cập nhật trang cá nhân thất bại',
+                        });
+                    }
+                    else{
+                        this.$notify({
+                            group: 'foo',
+                            type:  'success',
+                            title: 'Thông báo từ Facebook Fake',
+                            text: 'Cập nhật trang cá nhân thành công',
+                        });
+                    }
+                })
+
+
+            }
         },
         checkIsCurrentUser() {
             

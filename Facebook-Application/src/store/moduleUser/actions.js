@@ -261,4 +261,54 @@ export default{
         }
     },
 
+    async updateProfile({commit},{fullname = '',gender = '',description = '',profilepicture = null}){
+        commit('SET_LOADING',true);
+        try {
+
+            var bodyFormData = new FormData();
+            bodyFormData.append('fullname', fullname);
+            bodyFormData.append('gender', gender);
+            bodyFormData.append('description', description);
+
+            if(profilepicture){
+                bodyFormData.append('avatar', profilepicture);
+            }
+
+            let config ={
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer ' + localStorage.getItem('ACCESS_TOKEN')
+                }
+            } 
+            let result = await axiosInstance.post('/member/update.php', bodyFormData, config);
+
+            commit('SET_LOADING',false);
+            
+            //nếu thành công
+            if(result.data.status === 200){
+
+                commit('SET_EDIT_PROFILE',result.data.user)
+                
+                return{
+                    ok: true,
+                    data: result.data.user,
+                    error: null
+                }
+            }
+            return{
+                ok: false,
+                error: result.data.error
+            }
+
+
+        } catch (error) {
+            commit('SET_LOADING',false);
+
+            return{
+                ok: false,
+                error: error.message
+            }
+        }
+    }
+
 }
