@@ -264,7 +264,8 @@ export default{
     async updateProfile({commit},{fullname = '',gender = '',description = '',profilepicture = null}){
         commit('SET_LOADING',true);
         try {
-
+            
+            //dùng body form data để gói dữ liệu post server
             var bodyFormData = new FormData();
             bodyFormData.append('fullname', fullname);
             bodyFormData.append('gender', gender);
@@ -288,7 +289,7 @@ export default{
             if(result.data.status === 200){
 
                 commit('SET_EDIT_PROFILE',result.data.user)
-                
+
                 return{
                     ok: true,
                     data: result.data.user,
@@ -304,6 +305,43 @@ export default{
         } catch (error) {
             commit('SET_LOADING',false);
 
+            return{
+                ok: false,
+                error: error.message
+            }
+        }
+    },
+    async atcChangePassWord({commit},data){
+        commit('SET_LOADING',true);
+        try {
+            let config ={
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('ACCESS_TOKEN')
+                }
+            } 
+
+            let result = await axiosInstance.post('/member/password.php',data, config);
+            console.log(result)
+
+
+            //nếu thành công
+            if(result.data.status === 200){
+
+                commit('SET_LOADING',false);
+                return{
+                    ok: true,
+                    message: result.data.message
+                }
+
+            }
+            return{
+                ok: false,
+                error: result.data.error
+            }
+        } catch (error) {
+            commit('SET_LOADING',false);
+            // console.log('result.data - register = ',result.data.error)
             return{
                 ok: false,
                 error: error.message

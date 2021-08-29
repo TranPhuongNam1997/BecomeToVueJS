@@ -137,7 +137,7 @@ export default {
                             group: 'foo',
                             type:  'error',
                             title: 'Thông báo từ Facebook Fake',
-                            text: 'Cập nhật trang cá nhân thất bại',
+                            text: res.error,
                         });
                     }
                     else{
