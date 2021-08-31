@@ -322,8 +322,6 @@ export default{
             } 
 
             let result = await axiosInstance.post('/member/password.php',data, config);
-            console.log(result)
-
 
             //nếu thành công
             if(result.data.status === 200){
@@ -332,6 +330,38 @@ export default{
                 return{
                     ok: true,
                     message: result.data.message
+                }
+
+            }
+            return{
+                ok: false,
+                error: result.data.error
+            }
+        } catch (error) {
+            commit('SET_LOADING',false);
+            // console.log('result.data - register = ',result.data.error)
+            return{
+                ok: false,
+                error: error.message
+            }
+        }
+    },
+
+    async atcSearch({commit},stringWannaSearch){
+        commit('SET_LOADING',true);
+
+        try {
+            let result = await axiosInstance.get('/post/search.php?query=' + stringWannaSearch);
+
+            //nếu thành công
+            if(result.data.status === 200){
+
+                commit('SET_LOADING',false);
+                console.log('result.data.posts =',result.data.posts)
+                return{
+                    ok: true,
+                    posts: result.data.posts,
+                    error: null
                 }
 
             }

@@ -10,6 +10,7 @@ import PostDetail     from './Pages/PostDetail'
 import PostPage       from './Pages/PostPage'
 import NotFound       from './Pages/NotFound'
 import Register       from './Components/Register'
+import Search         from './Components/Search'
 import { authenticated , notauthenticated } from './Plugin/authenticator'
 
 Vue.use(VueRouter)
@@ -74,12 +75,19 @@ const routes = [
         beforeEnter: authenticated,
 
     },
+    //trang search
+    {
+        path: '/search',
+        name: 'search',
+        component: Search
+    },
     // trang 404
     {
         path: '*',
         name: 'not-found',
         component: NotFound
     }
+
 ]
 const router = new VueRouter({
     mode: 'history',

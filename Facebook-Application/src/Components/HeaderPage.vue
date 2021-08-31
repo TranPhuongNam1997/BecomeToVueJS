@@ -19,10 +19,14 @@
                             </svg>
                         </router-link>
                     </div>
-                    <div class="box-search">
-                        <input type="text" placeholder="Tìm kiếm trên Facebook">
-                        <i class="hu5pjgll m6k467ps"></i>
-                    </div>
+
+                    <form class="box-search" @submit.prevent="handleSearch">
+                        <input v-model="stringSearch" type="text" placeholder="Tìm kiếm trên Facebook">
+                        <button type="submit">
+                            <i class="hu5pjgll m6k467ps"></i>
+                        </button>
+
+                    </form>
                 </div>
                 <div class="header-right">
                     <button class="btn-category" type="button">
@@ -73,6 +77,7 @@ export default {
     data(){
         return{
             //khai báo biến cục bộ 
+            stringSearch: ''
         }
     },
     computed:{
@@ -117,6 +122,15 @@ export default {
         },
         imageUrlAlt(event) {
             event.target.src = "../../dist/img/defaultavt.png"
+        },
+        handleSearch(){
+            console.log('da submit stringSearch = ',this.stringSearch);
+            this.$router.push({
+                name:'search',
+                query: {
+                    query: this.stringSearch
+                }
+            });
         }
     },
     
@@ -223,5 +237,17 @@ export default {
         margin-right: 6px;
 
         color: #3576F1;
+    }
+    .box-search button{
+        position: absolute;
+        left: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+    }
+    .box-search i{
+        position: unset;
+        transform: none;
     }
 </style>
