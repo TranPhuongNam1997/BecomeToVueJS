@@ -35,7 +35,12 @@ const parseJwt = (token) => {
       return null;
   }
 }
+const replaceAll = function(strtarget,search, replacement) {
+  var target = strtarget;
+  return target.toLowerCase().split(search.toLowerCase()).join(replacement);
+};
 export{
   parseJwt,
-  removeVietnameseFromString
+  removeVietnameseFromString,
+  replaceAll
 } 
